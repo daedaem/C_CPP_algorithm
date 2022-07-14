@@ -38,3 +38,24 @@ int main(){
 //     return 0;
 // }
 
+
+
+// #include <stdio.h>
+
+// int main(){
+//     int a, b, smaller, bigger;
+//     scanf("%d %d", &a, &b);
+//     if(a<b){
+//         smaller = a;
+//         bigger = b;
+//     }
+//     else{
+//         smaller = b;
+//         bigger = a;
+//     }
+//     for (smaller; smaller <= bigger; smaller++)
+//     {
+//         printf("%d ", smaller);
+//     }
+//     return 0;
+// }
