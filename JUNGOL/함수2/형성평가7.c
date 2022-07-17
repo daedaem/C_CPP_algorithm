@@ -1,11 +1,21 @@
+// #include <stdio.h>
+// #define PI 3.141592
+// #define Square(r) (double)r*r*PI
+// int main(){
+//     double r;
+//     double sq;
+//     printf("radius : ");
+//     scanf("%lf", &r);
+//     sq = Square(r);
+//     printf("area = %.3f", sq);
+// }
+
 #include <stdio.h>
 #define PI 3.141592
-#define Square(r) {(double)r*r*PI}
+#define Square(r) r*r*PI
 int main(){
     double r;
-    double sq;
     printf("radius : ");
     scanf("%lf", &r);
-    sq = Square(r);
-    printf("area = %.3f", sq);
+    printf("area = %.3f", Square(r));
 }
