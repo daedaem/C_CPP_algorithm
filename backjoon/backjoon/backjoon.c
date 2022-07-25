@@ -149,7 +149,7 @@ int main(void)
 //================================
 // 2444 - 별 찍기 - 7
 //================================
-#if 1
+#if 0
 #include <stdio.h>
 
 int main(void) 
@@ -185,14 +185,55 @@ int main(void)
 #endif
 
 //================================
-// 0000 - SCS
+// 2445 - 별 찍기 - 8
 //================================
 #define _CRT_SECURE_NO_WARNINGS
-#if 0
+#if 1
 #include <stdio.h>
 
+void MakeStar(int n) 
+{
+	int i,j;
+	for (i = 1; i <= 2 * n; i++) {
+		if (i <= n) {
+		for (j = 1; j <= 2 * n; j++) {
+			
+				if ((j <= i) || (j >= (2 * n +1 - i))) {
+					printf("*");
+				}
+				else {
+					printf(" ");
+				}
+			}
+		printf("\n");
+		}
+		else 
+		{
+			for (j = 1; j <= 2 * n; j++) {
+				if ((j <= 2*n-i) || (j > i)) {
+					printf("*");
+				}
+				else printf(" ");
+			}
+			printf("\n");
+		}
+		
+	}
+	/*for (i = 0; i <= 2*n-1; i++) {
+		for (j = 0; j <= 2 * n - 1; j++) 
+		{
+			if (j <= i||j>=((2*n-1)-i)) {
+				printf("*");
+			}
+			else {
+				printf(" ");
+			}*/
+			
+}
 int main(void) {
-
+	int n;
+	scanf("%d", &n);
+	MakeStar(n);
 	return 0;
 }
 #endif
