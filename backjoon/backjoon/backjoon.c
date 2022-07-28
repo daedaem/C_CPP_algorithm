@@ -305,53 +305,97 @@ int main(int n) {
 #endif
 
 //================================
-// 0000 - SCS
+// 10871 - x보다 작은수
 //================================
-#define _CRT_SECURE_NO_WARNINGS
 #if 0
 #include <stdio.h>
 
 int main(void) {
+	int N, X;
+	int a;
+	scanf("%d %d", &N, &X);
+	for (int i = 0; i < N; i++)
+	{
+		scanf("%d", &a);
+		if (a < X) printf("%d ", a);
+	}
+	return 0;
+}
+#endif
+
+//================================
+// 10817 - 세 수
+//================================
+#if 0
+#include <stdio.h>
+
+int main(void) {
+	int A, B, C;
+	scanf("%d %d %d", &A, &B, &C);
+	if (A < B)
+	{
+		if (B > C) 
+		{
+			if (A < C) 
+			{
+				printf("%d", C);
+			}
+			else 
+			{
+				printf("%d", A);
+			}
+		}
+		else 
+		{
+			printf("%d", B);
+		}
+	}
+	else 
+	{
+		if (C > A) printf("%d", A);
+		else 
+		{
+			if (B < C) printf("%d", C);
+			else printf("%d", B);
+		}
+	}
 
 	return 0;
 }
 #endif
 
 //================================
-// 0000 - SCS
+// 11654 - 아스키 코드
 //================================
-#define _CRT_SECURE_NO_WARNINGS
 #if 0
 #include <stdio.h>
 
 int main(void) {
-
+	char a;
+	scanf(" %c", &a);
+	printf("%d", a);
 	return 0;
 }
 #endif
 
 //================================
-// 0000 - SCS
+// 11720 - 숫자의 합
 //================================
-#define _CRT_SECURE_NO_WARNINGS
+//다시보자 이문자 어렵더라
 #if 0
 #include <stdio.h>
+char number[101];
 
 int main(void) {
-
-	return 0;
-}
-#endif
-
-//================================
-// 0000 - SCS
-//================================
-#define _CRT_SECURE_NO_WARNINGS
-#if 0
-#include <stdio.h>
-
-int main(void) {
-
+	int N, sum=0;
+	
+	scanf("%d", &N);
+	for (int i = 0; i<N; i++) 
+	{
+		scanf(" %c", &number[i]);
+		sum += (number[i] - '0');
+	}
+	printf("%d", sum);
 	return 0;
 }
 #endif
@@ -464,25 +508,22 @@ int main(void)
 //================================
 //1929 - 소수구하기
 //================================
-#if 1
+#if 0
 #include <stdio.h>
 int arr[1000001] = {0};
-
 void check(int m, int n)
 {
-	if (m <= 2) printf("%d\n", 2);
-	arr[1]=1;
-	int idx, j;
-	for (idx = 2; idx <= n; idx++)
+	arr[1] = 1;
+	for (int i = 2; i <= n; i++) 
 	{
-		if ((idx >= 3) &&(idx>=m)&&(!arr[idx])) printf("%d\n", idx);
-		for (j = 1; ; j++) {
-			if (idx*j > n) break;
-			if (arr[idx*j]==0)
-			{
-				arr[idx*j] = 1;
-			}
+		for (int j = i + i; j <= n; j += i) 
+		{
+			if (!(arr[j])) arr[j] = 1;
 		}
+	}
+	for (int i = m; i <= n; i++) 
+	{
+		if (!(arr[i])) printf("%d\n", i);
 	}
 }
 int main(void)
@@ -498,6 +539,21 @@ int main(void)
 	check(m, n);
 	return 0;
 }
+	//if (m <= 2) printf("%d\n", 2);
+	//arr[1]=1;
+	//int idx, j;
+	//for (idx = 2; idx <= n; idx++)
+	//{
+	//	if ((idx >= 3) &&(idx>=m)&&(!arr[idx])) printf("%d\n", idx);
+	//	for (j = 1; ; j++) {
+	//		if (idx*j > n) break;
+	//		if (arr[idx*j]==0)
+	//		{
+	//			arr[idx*j] = 1;
+	//		}
+	//	}
+	//}
+
 
 //int prime(int );
 //void check(int , int);
@@ -530,4 +586,362 @@ int main(void)
 //		if (prime(m)) printf("%d\n", m);
 //	}
 //}
+#endif
+
+//================================
+//1978 - 소수 찾기
+//================================
+#if 0
+#include <stdio.h>
+int PrimeNumber(int n)
+{
+	if (n < 2) return 0;
+	for (int idx = 2; idx < n; idx++)
+	{
+		if (!(n%idx)) return 0;
+	}
+	return 1;
+}
+int main(void)
+{
+	int n;
+	int number, sum = 0;
+	scanf("%d", &n);
+	for (int i = 0; i < n; i++) 
+	{
+		scanf("%d", &number);
+		if (PrimeNumber(number)) sum++;
+	}
+	printf("%d", sum);
+}
+#endif
+
+//================================
+//2839- 설탕 배달
+//================================
+#if 0
+#include <stdio.h>
+
+int main(void)
+{
+	unsigned long long int min=5000/3;
+	int N;
+	scanf("%d", &N);
+	for (int i = 0; i <= N / 3; i++) 
+	{
+		for (int j = 0; j <= N / 5; j++) 
+		{
+			if ((i * 3 + j * 5) > N) break;
+			else if ((i * 3 + j * 5) == N) 
+			{
+				if ((i + j) < min) min = i + j;
+			}
+		}
+	}
+	if (min == 5000 / 3) 
+	{
+		printf("%d", -1);
+	}
+	else printf("%d", min);
+}
+
+#endif
+
+//================================
+//11721 - 열 개씩 끊어 출력하기
+//================================
+#if 0
+#include <stdio.h>
+char N[101];
+
+int main(void)
+{
+
+	for (int i = 1;; i++)
+	{
+		scanf("%c", &N[i]);
+		if (N[i] == '\n')
+		{
+			break;
+		}
+		printf("%c", N[i]);
+		if (!(i %= 10)) printf("\n");
+	}
+}
+
+#endif
+
+//================================
+//9093 - 단어 뒤집기
+//================================
+#if 1
+#include <stdio.h>
+#include <string.h>
+
+void changeWords(char temp[], int len);
+int main(void)
+{
+	int T;
+	int cnt = 0;
+	int len;
+	char arr[1010];
+	char temp[30];
+	scanf("%d ", &T);
+	for (int i = 0; i < T; i++)
+	{
+		arr[1010];
+		temp[30];
+		gets(arr);
+		len = strlen(arr);
+
+		for (int j = 0; j <= len; j++)
+		{
+			if ((arr[j] == ' ') || (j == len))
+			{
+				changeWords(temp, cnt);
+				cnt = 0;
+			}
+			else
+			{
+				temp[cnt] = arr[j];
+				cnt++;
+			}
+		}
+		printf("\n");
+	}
+	return 0;
+}
+void changeWords(char temp[], int len)
+{
+	for (int i = len - 1; i >= 0; i--)
+	{
+		printf("%c", temp[i]);
+		temp[i] = 0;
+	}
+	printf(" ");
+}
+#endif
+//================================
+//17413 - 단어 뒤집기2
+//================================
+#if 0
+#include <stdio.h>
+int main(void)
+{
+	
+}
+#endif
+
+//================================
+//10809 - 알파벳 찾기
+//================================
+//다시풀자 오래걸렸다
+//우선 인덱스를 받아줄 record 배열을 -1로 다 초기화
+//하나 받고 그 알파벳 위치에다가 인덱스 넣어주고
+
+#if 0
+#include <stdio.h>
+#define SIZE(a) sizeof(a)/sizeof(a[0])
+
+char alph[] = { "abcdefghizklmnopqrstuvwxyz" };
+
+int main(void)
+{
+	char record['z'-'a'+1];
+	char word;
+	int lengths;
+	for (int i = 0; i < SIZE(record); i++) 
+	{
+		record[i] = -1;
+	}
+
+	for (int i = 0;; i++)
+	{
+		scanf("%c", &word);
+		if (word == '\n') 
+		{ 
+			lengths = i;
+			break;
+		}
+		if (record[word - 'a'] == -1)
+			record[word - 'a'] = i;
+	}
+	for (int i = 0; i < SIZE(record); i++)
+	{
+		printf("%d ", record[i]);
+	}
+}
+#endif
+
+//================================
+//2675 - 문자열 반복
+//================================
+//string.h strlen 함수 기억하자
+// string으로 받을 수 있다는것 잊지말자
+#if 0
+#include <stdio.h>
+#include <string.h>
+int main(void)
+{
+	int T;
+	int n;
+	char word[20];
+	scanf("%d", &T);
+	for (int i=0; i < T; i++) 
+	{
+		scanf("%d %s", &n, &word);
+		for (int start = 0; start < strlen(word); start++) 
+		{
+			for (int j = 0; j < n; j++)
+			{
+				printf("%c", word[start]);
+			}
+		}
+		printf("\n");
+	}
+	//for (int i = 0; i < len; i++) 
+	//{
+	//	for (int j = 0; j < n; j++) 
+	//	{
+	//		printf("%c",words[])
+	//	}
+	//}
+
+}
+#endif
+
+//================================
+//2675 - 문자열 반복
+//================================
+#if 0
+#include <stdio.h>
+#include <string.h>
+void changeword(char [], int);
+
+int main(void)
+{
+	int T;
+	char text[1001];
+	char temp;
+	char word[20];
+	int cnt=0;
+	scanf("%d", &T);
+	
+	for (int i = 0; i < T; i++) 
+	{
+		gets(text);
+		//마지막 글자 확인 꼭
+		for (int j = 0; j < strlen(text) - 1; j++) 
+		{
+			if ((text[j + 1] == ' ')) 
+			{
+				changeword(word, cnt);
+				cnt = 0;
+				word[20];
+				continue;
+			}
+			if (text[j] ==' ') printf(" ");
+			else 
+			{	
+				word[cnt] = text[j];
+				cnt++;
+			}
+		}	
+	}
+}
+void changeword(char word[], int len)
+{
+	for (int i = len; i >= 0; i--)
+	{
+		printf("%c", word[i]);
+	}	
+}
+#endif
+//================================
+//1157 - 단어 공부
+//================================
+#if 0
+#include <stdio.h>
+#include <string.h>
+int alph[('z'-'a')+10];
+int main(void)
+{
+	char array[1000010];
+	char word;
+	int maxx = 0;
+	int cnt = 1;
+	scanf("%s", array);
+	int len = strlen(array);
+	for (int i = 0; i < len; i++)
+	{
+		int index;
+		//만약 대문자면
+		if ((array[i] >= 'A') && (array[i] <= 'Z'))
+		{
+			index = array[i] - 'A';
+			alph[index] += 1;
+		}
+		// 소문자면
+		if (((array[i] >= 'a') && (array[i] <= 'z')))
+		{
+			index = array[i] - 'a';
+			alph[index] += 1;
+		}
+		// 만약에
+		if (maxx == alph[index])
+		{
+			cnt++;
+		}
+		if (maxx < alph[index])
+		{
+			cnt = 1;
+			word = 'A'+index;
+			maxx = alph[index];
+		}
+	}
+	if (cnt >= 2) printf("?");
+	else
+	{
+		if ((word >= 'a') && (word <= 'z'))
+		{
+			printf("%c", word + ('a' - 'A'));
+		}
+		else printf("%c", word);
+	}
+	return 0;
+}
+#endif
+
+//================================
+//1152 - 단어의 개수
+//================================
+// 진짜 그지같은 문제 fgets로 못 풀겠음
+#if 0
+#include <stdio.h>
+#include <string.h>
+int func(char word)
+{
+	if ((word >= 'a') && (word <= 'z')) return 1;
+	if ((word >= 'A') && (word <= 'Z')) return 1;
+	return 0;
+}
+int main()
+{
+	char words[1000010];
+	int sum = 0;
+	int len;
+	int cnt = 0;
+	gets(words);
+	len = strlen(words);
+	for (int i = 0; i < len; i++)
+	{
+		//맨 앞에가 공백인 경우
+		// 숫자세야할 때,
+		if ((func(words[i])) && ((words[i + 1] == ' ') || (words[i + 1] == '\0')))
+			sum++;
+	}
+	printf("%d", sum);
+
+	return 0;
+}
 #endif
