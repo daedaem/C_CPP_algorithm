@@ -724,11 +724,70 @@ void changeWords(char temp[], int len)
 //================================
 //17413 - 단어 뒤집기2
 //================================
+// 어렵다 진짜.... 오래걸림
 #if 0
 #include <stdio.h>
-int main(void)
+#include <string.h>
+char strings[1000000 + 10];
+int lens;
+char stack[1000000 + 10];
+
+void output(void);
+void changearr(void);
+int main(void) 
 {
+	fgets(strings, 100000 + 10, stdin);
+	lens = strlen(strings);
+	changearr();
+	output();
 	
+	return 0;
+}
+void output(void) 
+{
+	for (int i = 0; i < lens - 1; i++)
+	{
+		printf("%c", strings[i]);
+	}
+}
+void changearr(void) 
+{
+	int start, end;
+	for (int i = 0; i < lens-1; i++) 
+	{
+		if (strings[i] == '\n') break;
+		if (strings[i] == '<') 
+		{
+			while (1) 
+			{
+				if (strings[i] == '>') break;
+				i++;
+			}
+			continue;
+		}
+		if (strings[i] == ' ') continue;
+		//정상적인 문자면
+		else 
+		{
+			start = i;
+			while (1) 
+			{
+ 				if (strings[i + 1] == ' ' || strings[i+1]=='\n' || strings[i+1]=='\0'|| strings[i+1]=='<'|| strings[i + 1] == '>')
+				{
+					end = i;
+					break;
+				}
+				i++;
+			}
+			for (int i = 0; i <=(end-start)/2; i++) 
+			{
+				int temp;
+				temp = strings[start+i];
+				strings[start+i] = strings[end - i];
+				strings[end - i] = temp;
+			}
+		}
+	}
 }
 #endif
 
@@ -989,4 +1048,121 @@ int main(void)
 	//n부분에는
 
 }
+#endif
+
+//2022.08.01
+//----------------------------------------------------------
+// 2908 - 상수
+//----------------------------------------------------------
+#if 0
+#include <stdio.h>
+char a[3 + 2];
+char b[3 + 2];
+
+char* compare(void);
+void change(char a[], char b[]);
+int main(void) 
+{
+	char* result;
+	scanf("%s %s", a, b);
+	change(a, b);
+	result = compare();
+	printf("%s", result);
+	return 0;
+}
+char* compare(void) 
+{
+	for (int i = 0; i < 3; i++) 
+	{
+		if (a[i] > b[i]) return a;
+		else if (a[i] < b[i]) return b;
+		else continue;
+	}
+	return a;
+}
+void change(char a[], char b[]) 
+{
+	char temp;
+	temp = a[0];
+	a[0] = a[2];
+	a[2] = temp;
+	temp = b[0];
+	b[0] = b[2];
+	b[2] = temp;
+}
+#endif
+
+//----------------------------------------------------------
+// 5622 - 다이얼
+//----------------------------------------------------------
+#if 0
+#include <stdio.h>
+#include <string.h>
+int main(void) 
+{
+	// 마지막에 길이 플러스
+	int lens;
+	int sum = 0;
+	char problem[15 + 2];
+	char phones[15 + 2][4+2] = { {0},{0}, {'A','B','C'}, {'D','E','F'},{'G','H','I'},{'J','K','L'},{'M','N','O'},{'P','Q','R','S'},{'T','U','V'},{'W','X','Y','Z'},{'0'} };
+	scanf("%s", problem);
+	lens = strlen(problem);
+	int phonelens = 11;
+	int yes = 0;
+	for (int i = 0; i < lens; i++) 
+	{
+		for (int j = 0; j < phonelens; j++) 
+		{
+			yes = 0;
+			for (int z = 0; z < strlen(phones[j]); z++) 
+			{
+				
+				if (phones[j][z] == problem[i])
+				{
+					sum += j;
+					yes = 1;
+					break;
+				}
+			}
+			if (yes == 1) break;
+		}
+	}
+	printf("%d", sum + lens);
+	return 0;
+}
+#endif
+
+//----------------------------------------------------------
+// 2941 - 크로아티아 알파벳
+//----------------------------------------------------------
+#if 1
+#include <stdio.h>
+#include <string.h>
+char stack[100 + 10];
+int stackidx=0;
+char alph[30] = { "ABCDEFGHIJKLMNOPQRSTUVWXYZ" };
+char croatia[6 + 2][2 + 2] = { {"c="},{"c-"},{"dz="},{"d-"},{"lj"},{"nj"},{"s="},{"z="} };
+char words[100 + 10];
+
+int* check(void);
+
+int main(void)
+{
+	scanf("%s", words);
+	int lens = strlen(words);
+	for (int i = 0; i < lens; i++) 
+	{
+		stack[stackidx] = words[i];
+		stackidx++;
+		if (strlen(stack) > 2) 
+		{
+			printf("%d", strlen(stack));
+			//check()
+		}
+	}
+}
+//int* check(void) 
+//{
+//	stack[i];
+//}
 #endif
