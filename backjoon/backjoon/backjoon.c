@@ -1135,7 +1135,121 @@ int main(void)
 //----------------------------------------------------------
 // 2941 - 크로아티아 알파벳
 //----------------------------------------------------------
-#if 1
+#if 0
+#include <stdio.h>
+#include <string.h>
+char words[300 + 100];
+int len;
+int sum;
+void input(void);
+int find(int);
+int compare(int, int);
+
+int main(void)
+{
+	input();
+	printf("%d", sum);
+	return 0;
+}
+void input(void)
+{
+	scanf("%s", words);
+	len = strlen(words);
+	sum = strlen(words);
+	for (int i = len; i > 0; i--)
+	{
+		if (i > 0) {
+			if (words[i] == '=') 
+			{
+				if ((words[i - 1] == 'c') || (words[i - 1] == 'd') || (words[i - 1] == 's'))
+				{
+					sum--;
+				}
+				else if ((words[i - 1] == 'z')) 
+				{
+					sum--;
+					if ((i > 1)&&(words[i - 2]=='d'))
+					{
+						sum--;
+					}
+				}
+			}
+			else if (words[i] == '-') 
+			{
+				if ((words[i - 1] == 'c') || (words[i - 1] == 'd'))
+				{
+					sum--;
+				}
+
+			}
+			else if (words[i]=='j') 
+			{
+				if ((words[i - 1] == 'l') || (words[i - 1] == 'n')) 
+				{
+					sum--;
+				}
+			}
+		}
+	}
+	return 0;
+}
+#endif
+
+
+#if 0
+#include <stdio.h>
+#include <string.h>
+char croatia[8 + 2][6 + 2] = { {"c="},{"c-"}, {"dz="}, {"d-"}, {"lj" }, {"nj"}, {"s="}, {"z="} };
+char words[300+100];
+int len;
+int croidx;
+int sum = 0;
+
+void input(void);
+int find(int);
+int compare(int, int);
+
+int main(void) 
+{
+	input();
+	printf("%d", strlen(words)-sum);
+	return 0;
+}
+void input(void) 
+{
+	scanf("%s", words);
+	len = strlen(words);
+	for (int i = 0; i < len; i++) 
+	{
+		sum += find(i);
+	}
+}
+int find(int wordidx)
+{
+	for (int i = 0; i < 8; i++)
+	{
+		if (words[wordidx] != croatia[i][0]) continue;
+		else
+		{
+			croidx = i;
+			if (compare(wordidx, croidx)) return 1;
+		}
+	}
+	return 0;
+}
+int compare(int wordidx ,int croidx)
+{
+	int r = strlen(croatia[croidx]);
+	for (int i = 0;  i < r; i++) 
+	{
+		if (words[wordidx] != croatia[croidx][i]) return 0;
+		else wordidx++;
+	}
+	if (wordidx == r) return 1;
+	//return 1;
+}
+#endif
+#if 0
 #include <stdio.h>
 #include <string.h>
 char stack[100 + 10];
@@ -1156,8 +1270,7 @@ int main(void)
 		stackidx++;
 		if (strlen(stack) > 2) 
 		{
-			printf("%d", strlen(stack));
-			//check()
+			check();
 		}
 	}
 }
@@ -1165,4 +1278,140 @@ int main(void)
 //{
 //	stack[i];
 //}
+#endif
+
+//----------------------------------------------------------
+// 1316 - 그룹 단어 체커
+//----------------------------------------------------------
+#if 0
+#include <stdio.h>
+#include <string.h>
+
+char alph[100] = {"abcdefghijklmnopqrstuvwxyz"};
+int sum = 0;
+char temp[100+10][100 + 10];
+void input(void);
+int n;
+int find(int );
+int main(void) 
+{
+	input();
+	return 0;
+}
+void input(void) 
+{
+	scanf("%d", &n);
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%s", &temp[i]);
+	}
+	for (int i = 0; i < n; i++) 
+	{
+		sum += find(i);
+	}
+	printf("%d", sum);
+}
+int find(int idx) 
+{
+	int visited[100] = { 0 };
+	int lens = strlen(temp[idx]);
+	if (lens == 1) return 1;
+	for (int i = 0; i < lens; i++) 
+	{
+		
+		if (i < lens -1) 
+		{
+			//앞뒤 같으면 패스
+			if (temp[idx][i] == temp[idx][i + 1]) 
+			{
+				if (visited[(temp[idx][i]) - 'a'])
+				{
+					return 0;
+				}
+				else 
+				{
+					continue;
+				}
+			} 
+			else
+			{
+				//앞뒤 다르면 밑에꺼
+				if (visited[(temp[idx][i]) - 'a'])
+				{
+					return 0;
+				}
+				else 
+				{
+					visited[(temp[idx][i]) - 'a'] = 1;
+				}
+			}
+		}
+		else 
+		{
+			if (temp[idx][i] == temp[idx][i - 1]) 
+			{
+				return 1;
+			}
+			else
+			{
+				if (visited[(temp[idx][i]) - 'a'])
+				{
+					return 0;
+				}
+				else 
+				{
+					visited[(temp[idx][i]) - 'a'] = 1;
+				}
+			}
+		}
+	}
+	return 1;
+}
+#endif
+
+//----------------------------------------------------------
+// 2846 - 오르막길
+//----------------------------------------------------------
+#if 1
+#include <stdio.h>
+int n;
+int arr[1000 + 10];
+int maxx = 0;
+int size[1000 + 10] = {0};
+void input(void);
+void find(void);
+
+int main(void)
+{
+	input();
+	find();
+	return 0;
+}
+void input(void)
+{
+	scanf("%d", &n);
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%d",&arr[i]);
+	}
+}
+void find(void)
+{
+	for (int i = 0; i < n-1; i++) 
+	{
+		if (arr[i] < arr[i + 1]) 
+		{
+			size[i+1] = size[i] + (arr[i + 1] - arr[i]);
+			if (maxx < size[i+1]) 
+			{
+				maxx = size[i+1];
+			}
+		}
+		else 
+		{
+			size[i+1] = 0;
+		}
+	}
+	printf("%d", maxx);
+}
 #endif
