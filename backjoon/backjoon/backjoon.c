@@ -1758,3 +1758,135 @@ int main()
 	return 0;
 }
 #endif
+
+/***********************************************************/
+// 1158 - 요세푸스
+/***********************************************************/
+#if 0
+#include <stdio.h>
+#define MAX 5000
+int queue[MAX + 10];
+int FR = 0; BE = 0;
+int size = 0;
+
+void enque(int item) 
+{
+	FR = (FR + 1) % MAX;
+	queue[FR] = item;
+	size++;
+}
+int deque()
+{
+	BE = (BE + 1) % MAX;
+	size--;
+	return queue[BE];
+}
+int main(void) 
+{
+	int i;
+	int n, k;
+	int result;
+	int cnt=0;
+	int idx = 0;
+	scanf("%d %d", &n, &k);
+	//일단 초기화
+	for (i = 0; i < n; i++) 
+	{
+		enque(i);
+	}
+	printf("<");
+	for (;;) 
+	{
+		for (cnt = 0; cnt<k; cnt++) 
+		{
+			cnt %= k;
+			if (cnt == k-1) 
+			{
+				result = deque();
+				if (idx == n-1) 
+				{
+					printf("%d", result + 1);
+				}
+				else 
+				{
+					printf("%d, ", result + 1);
+				}
+				idx++;
+			}
+			else 
+			{
+				enque(deque());
+			}
+		}
+		if (idx == n) break;
+	}
+	printf(">");
+}
+
+#endif 
+
+
+#if 0
+#include <stdio.h>
+#define MAX 5000
+//N번 삭제, K번째 사람 삭제
+int Que[MAX +10];
+int values;
+int front = 0, back = 0;
+void enque(int number);
+int deque(void);
+int main(void)
+{
+	int N, K;
+	int i;
+	int cnt=0;
+	int idx=0;
+	int end=0;
+	scanf("%d %d", &N, &K);
+	for (int j = 0; j < N; j++) 
+	{
+		enque(j+1);
+	}
+	printf("<");
+	for (;;) 
+	{
+		if (cnt == N) break;
+		// 해당 순번에 deque 아니면 디큐한걸 인큐에
+		end = 0;
+		for (int c = 0; c < K; c++) 
+		{
+			if (c == K - 1) 
+			{
+				cnt++;
+				end = 1;
+				if (cnt == N) 
+				{
+					printf("%d", deque());
+				}
+				else 
+				{
+					printf("%d, ", deque());
+				}
+			}
+			else 
+			{
+				enque(deque());
+			}
+			if (end) break;
+		}
+	}
+	printf(">");
+}
+void enque(int number) 
+{
+	Que[front] = number;
+	front = (front + 1) % MAX;
+}
+int deque(void) 
+{
+	values = Que[back];
+	back = (back + 1) % MAX;
+	return values;
+
+}
+#endif
