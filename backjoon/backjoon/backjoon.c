@@ -975,6 +975,8 @@ int main(void)
 //1152 - 단어의 개수
 //================================
 // 진짜 그지같은 문제 fgets로 못 풀겠음
+//다시 풀어야 할 문제, re
+
 #if 0
 #include <stdio.h>
 #include <string.h>
@@ -1054,6 +1056,7 @@ int main(void)
 //----------------------------------------------------------
 // 2908 - 상수
 //----------------------------------------------------------
+//다시 풀어야 할 문제, re
 #if 0
 #include <stdio.h>
 char a[3 + 2];
@@ -1135,6 +1138,7 @@ int main(void)
 //----------------------------------------------------------
 // 2941 - 크로아티아 알파벳
 //----------------------------------------------------------
+//다시 풀어야 할 문제, re
 #if 0
 #include <stdio.h>
 #include <string.h>
@@ -1245,8 +1249,7 @@ int compare(int wordidx ,int croidx)
 		if (words[wordidx] != croatia[croidx][i]) return 0;
 		else wordidx++;
 	}
-	if (wordidx == r) return 1;
-	//return 1;
+	return 1;
 }
 #endif
 #if 0
@@ -1283,6 +1286,7 @@ int main(void)
 //----------------------------------------------------------
 // 1316 - 그룹 단어 체커
 //----------------------------------------------------------
+//다시 풀어야 할 문제, re
 #if 0
 #include <stdio.h>
 #include <string.h>
@@ -1372,7 +1376,7 @@ int find(int idx)
 //----------------------------------------------------------
 // 2846 - 오르막길
 //----------------------------------------------------------
-#if 1
+#if 0
 #include <stdio.h>
 int n;
 int arr[1000 + 10];
@@ -1413,5 +1417,344 @@ void find(void)
 		}
 	}
 	printf("%d", maxx);
+}
+#endif
+
+//----------------------------------------------------------
+// 10163 - 색종이
+//----------------------------------------------------------
+#if 0
+#include <stdio.h>
+#define SIZE(a) (sizeof(a)/sizeof(a[0]))
+
+void make(int y1, int x1, int y2, int x2, int);
+unsigned long long arr[1001 + 10][1001 + 10] = {0};
+int main(void) 
+{
+	int n;
+	int y1, x1, yd, xd;
+	int cnt=1;
+	int max = 0;
+	int tempx = 0;
+	int tempy = 0;
+	scanf("%d", &n);
+
+	for (;;) 
+	{
+		scanf("%d %d %d %d", &y1, &x1, &yd, &xd);
+		tempy = y1 + yd;
+		tempx = x1 + xd;
+		if (tempy < tempx) 
+		{
+			if (max < tempx) 
+			{
+				max = tempx;
+			}
+		}
+		else 
+		{
+			if (max < tempy) 
+			{
+				max = tempy;
+			}
+		}
+		make(y1, x1, y1+yd, x1+xd, cnt);
+		cnt++;
+		if (cnt > n) break;
+	}
+}
+void make(int y1, int x1, int y2, int x2, int n) 
+{
+	int i, j;
+	for (i = 0; i < SIZE(arr); i++) 
+	{
+		for (j = 0; j < SIZE(arr); j++) 
+		{
+			if ((y1<=i && i <= y2) && (x1<=j && j<= x2))
+			{
+				arr[i][j] = n;
+			}
+			printf("%d ", arr[i][j]);
+		}
+		printf("\n");
+	}
+}
+#endif
+
+//--------------------------------------------------------------
+// 10828 - 스택
+//--------------------------------------------------------------
+#if 0
+#include <stdio.h>
+#include <string.h>
+// push면 숫자까지 받아서 스택에 넣고
+// pop은 stackpoint 체크
+// 
+int stack[100000 + 10] = {0};
+int main(void) 
+{
+	int N;
+	int i;
+	int number;
+	int SP;
+	int trash;
+	
+	scanf("%d", &N);
+	SP = N;
+	for (i = 0; i < N; i++)
+	{
+		char temp[100];
+		scanf("%s", temp);
+		if (!(strcmp(temp, "push")))
+		{
+			scanf("%d", &number);
+			SP--;
+			stack[SP] = number;
+		}
+		else if (!(strcmp(temp, "pop")))
+		{
+			if (stack[SP]!=0) 
+			{
+				printf("%d\n", stack[SP]);
+				trash =stack[SP];
+				SP++;
+			}
+			else 
+			{
+				printf("%d\n", -1);
+			}
+		}
+		else if (!(strcmp(temp, "top")))
+		{
+			if (stack[SP]!=0) 
+			{
+				printf("%d\n", stack[SP]);
+			}
+			else printf("%d\n", -1);
+		}
+		else if (!(strcmp(temp, "size")))
+		{
+			printf("%d\n", N - SP);
+		}
+		else if (!(strcmp(temp, "empty")))
+		{
+			if (SP ==N) printf("%d\n", 1);
+			else printf("%d\n", 0);
+		}
+	}
+
+	
+}
+#endif
+
+//--------------------------------------------------------------
+// 3986 - 좋은 단어
+//--------------------------------------------------------------
+
+#if 0
+//단어를 하나씩 받고
+// stack 한개 넣고 
+//stack 추가하는 함수
+//빼는 함수 
+//들어있는게 지금과 같으면  빼고 cnt +1
+#include <stdio.h>
+#include <string.h>
+
+ 
+int main(void) 
+{
+	int n;
+	int len;
+	int SP;
+	int result = 0;
+	char trash;
+	scanf("%d", &n);
+	for (int TC = 0; TC < n; TC++) 
+	{
+		char words[100000 + 10] = {0};
+		char stack[100000 + 10] = {0};
+		int i;
+		int temp = 0;
+		scanf("%s", words);
+		len = strlen(words);
+		SP = len;
+		
+		for ( i = 0; i < len; i++) 
+		{
+		//스택이 비어있으면
+			if (words[i] == 'A')
+			{
+				if (stack[SP] != 'A' && stack[SP] != 'B') 
+				{
+					SP--;
+					stack[SP] = words[i];
+				}
+				else if (stack[SP] == 'B')
+				{
+					SP--;
+					stack[SP] = words[i];
+				}
+				else if  (stack[SP] == 'A')
+				{
+					//스택안을 비워줘야 필요한가?
+					//trash = stack[SP];
+					stack[SP] = NULL;
+					SP++;
+					//이부분 바꿔야할지도
+					temp = 1;
+				}
+			}
+			else if (words[i] == 'B')
+			{
+				if (stack[SP] != 'A' && stack[SP] != 'B')
+				{
+					SP--;
+					stack[SP] = words[i];
+				}
+				else if (stack[SP] == 'A')
+				{
+					SP--;
+					stack[SP] = words[i];
+				}
+				else if (stack[SP] == 'B')
+				{
+
+					//스택안을 비워줘야 필요한가?
+					//trash = stack[SP];
+					stack[SP] = NULL;
+					SP++;
+					//이부분 바꿔야할지도
+					temp = 1;
+				}
+			}
+		}
+		for (int j =len; j >0; j--)
+		{
+			if (stack[j] == 'A' || stack[j] == 'B')
+			{
+				temp = 0;
+				break;
+			}
+		}
+		result += temp;
+	}
+	printf("%d", result);
+	return 0;
+}
+#endif
+
+#if 0
+#include <stdio.h>
+#include <string.h>
+
+char words[100000 + 10];
+char stack[100000 + 10];
+int main(void)
+{
+	int n;
+	int len;
+	int SP;
+	int result = 0;
+	char trash;
+		scanf("%d", &n);
+	for (int TC = 0; TC < n; TC++)
+	{
+
+		int i;
+		int temp = 0;
+		scanf("%s", words);
+		len = strlen(words);
+		SP = 0;
+		stack[SP] = words[0];
+		for (i = 1; i < len; i++)
+		{
+			//스택이 비어있으면
+			if (words[i] == 'A')
+			{
+				if (stack[SP] == 'A')
+				{
+					//스택안을 비워줘야 필요한가?
+					//trash = stack[SP];
+					//stack[SP] = NULL;
+					SP--;
+					//이부분 바꿔야할지도
+					temp = 1;
+				}
+				else
+				{
+					stack[++SP] = words[i];
+				}
+			}
+			else if (words[i] == 'B')
+			{
+
+				if (stack[SP] == 'B')
+				{
+					//스택안을 비워줘야 필요한가?
+					//stack[SP] = NULL;
+					SP--;
+					//이부분 바꿔야할지도
+					temp = 1;
+				}
+				else 
+				{
+					stack[++SP] = words[i];
+
+				}
+			}
+		}
+		for (int j = 0; j <= SP; j++)
+		{
+			if (stack[j] == 'A' || stack[j] == 'B')
+			{
+				temp = 0;
+				break;
+			}
+		}
+		
+		result += temp;
+	}
+	printf("%d", result);
+	return 0;
+}
+#endif
+
+//최고로 좋은 코드 
+#if 0
+#include <stdio.h>
+
+int N;
+char S[100010];
+int stack[100010];
+int sp;
+
+int check(void)
+{
+	sp = 0;
+	stack[sp++] = S[0];
+	for (int j = 1; S[j]; ++j) {
+		if (stack[sp - 1] == S[j]) {
+			sp--;
+		}
+		else {
+			stack[sp++] = S[j];
+		}
+	}
+	if (sp > 0) return 0;
+	return 1;
+}
+
+int main()
+{
+	int ans = 0;
+	scanf("%d", &N);
+
+	for (int i = 0; i < N; ++i) {
+		scanf("%s", S);
+		ans += check();
+	}
+	printf("%d\n", ans);
+
+	return 0;
 }
 #endif
