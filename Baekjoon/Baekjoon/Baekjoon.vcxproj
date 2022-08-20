@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{2B5621D2-A292-468D-B519-8EF06931F0EF}</ProjectGuid>
+    <ProjectGuid>{018D55DE-5CD2-488D-8F10-1F8D5D46358E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>backjoon</RootNamespace>
+    <RootNamespace>Baekjoon</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -151,7 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="backjoon.c" />
+    <ClCompile Include="Baekjoon.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

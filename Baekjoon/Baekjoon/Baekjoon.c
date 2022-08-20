@@ -27,7 +27,7 @@ int main(void) {
 	int n, r, c;
 	scanf("%d", &n);
 	for (r = 1; r <= n; r++) {
-		for (c = 1; c <=n;c++) {
+		for (c = 1; c <= n; c++) {
 			if (c <= (n - r)) printf(" ");
 			else printf("*");
 		}
@@ -88,7 +88,7 @@ int main(void)
 //================================
 #if 0
 #include <stdio.h>
-int main(void) 
+int main(void)
 {
 	int r, left, c, n;
 	scanf("%d", &n);
@@ -96,7 +96,7 @@ int main(void)
 		for (left = n - r; left > 0; left--) {
 			printf(" ");
 		}
-		for(c = 1; c <= (2 * r) - 1; c++) {
+		for (c = 1; c <= (2 * r) - 1; c++) {
 			printf("*");
 		}
 		printf("\n");
@@ -122,22 +122,22 @@ int main(void)
 //	return 0;
 //}
 #endif
-	
+
 //================================
 // 2443 - 별 찍기 - 6
 //================================
 #if 0
 #include <stdio.h>
 
-int main(void) 
+int main(void)
 {
-	int n, space,r, c;
+	int n, space, r, c;
 	scanf("%d", &n);
 	for (r = 0; r < n; r++) {
 		for (space = 0; space < r; space++) {
 			printf(" ");
 		}
-		for (c = 1; c <= (2*(n-r))-1 ; c++) {
+		for (c = 1; c <= (2 * (n - r)) - 1; c++) {
 			printf("*");
 		}
 		printf("\n");
@@ -152,11 +152,11 @@ int main(void)
 #if 0
 #include <stdio.h>
 
-int main(void) 
+int main(void)
 {
-	int n, space, sideR,sideC, center;
+	int n, space, sideR, sideC, center;
 	scanf("%d", &n);
-	for (sideR = 1; sideR <= n-1; sideR++) {
+	for (sideR = 1; sideR <= n - 1; sideR++) {
 		for (space = n - 1; space >= sideR; space--) {
 			printf(" ");
 		}
@@ -166,7 +166,7 @@ int main(void)
 		printf("\n");
 	}
 
-	for (center = 1; center <= (2*n)-1; center++) {
+	for (center = 1; center <= (2 * n) - 1; center++) {
 		printf("*");
 	}
 	printf("\n");
@@ -174,8 +174,8 @@ int main(void)
 	for (sideR = 1; sideR <= n - 1; sideR++) {
 		for (space = 1; space <= sideR; space++) {
 			printf(" ");
-		} 
-		for (sideC = 2*(n - sideR)-1; sideC >= 1; sideC--) {
+		}
+		for (sideC = 2 * (n - sideR) - 1; sideC >= 1; sideC--) {
 			printf("*");
 		}
 		printf("\n");
@@ -191,35 +191,35 @@ int main(void)
 #if 0
 #include <stdio.h>
 
-void MakeStar(int n) 
+void MakeStar(int n)
 {
-	int i,j;
+	int i, j;
 	for (i = 1; i <= 2 * n; i++) {
 		if (i <= n) {
-		for (j = 1; j <= 2 * n; j++) {
-			
-				if ((j <= i) || (j >= (2 * n +1 - i))) {
+			for (j = 1; j <= 2 * n; j++) {
+
+				if ((j <= i) || (j >= (2 * n + 1 - i))) {
 					printf("*");
 				}
 				else {
 					printf(" ");
 				}
 			}
-		printf("\n");
+			printf("\n");
 		}
-		else 
+		else
 		{
 			for (j = 1; j <= 2 * n; j++) {
-				if ((j <= 2*n-i) || (j > i)) {
+				if ((j <= 2 * n - i) || (j > i)) {
 					printf("*");
 				}
 				else printf(" ");
 			}
 			printf("\n");
-		}	
+		}
 	}
 	/*for (i = 0; i <= 2*n-1; i++) {
-		for (j = 0; j <= 2 * n - 1; j++) 
+		for (j = 0; j <= 2 * n - 1; j++)
 		{
 			if (j <= i||j>=((2*n-1)-i)) {
 				printf("*");
@@ -227,7 +227,7 @@ void MakeStar(int n)
 			else {
 				printf(" ");
 			}*/
-			
+
 }
 int main(void) {
 	int n;
@@ -249,7 +249,7 @@ void MakeStar(int n)
 	int r, c;
 	for (r = 1; r <= n; r++)
 	{
-		for (c = 1; c <= 2 * n -1 -(r-1);c++) 
+		for (c = 1; c <= 2 * n - 1 - (r - 1); c++)
 		{
 			if (c < r) printf(" ");
 			else printf("*");
@@ -334,26 +334,26 @@ int main(void) {
 	scanf("%d %d %d", &A, &B, &C);
 	if (A < B)
 	{
-		if (B > C) 
+		if (B > C)
 		{
-			if (A < C) 
+			if (A < C)
 			{
 				printf("%d", C);
 			}
-			else 
+			else
 			{
 				printf("%d", A);
 			}
 		}
-		else 
+		else
 		{
 			printf("%d", B);
 		}
 	}
-	else 
+	else
 	{
 		if (C > A) printf("%d", A);
-		else 
+		else
 		{
 			if (B < C) printf("%d", C);
 			else printf("%d", B);
@@ -387,10 +387,10 @@ int main(void) {
 char number[101];
 
 int main(void) {
-	int N, sum=0;
-	
+	int N, sum = 0;
+
 	scanf("%d", &N);
-	for (int i = 0; i<N; i++) 
+	for (int i = 0; i < N; i++)
 	{
 		scanf(" %c", &number[i]);
 		sum += (number[i] - '0');
@@ -406,21 +406,21 @@ int main(void) {
 //================================
 #if 0
 #include <stdio.h>
-void check(int n) 
+void check(int n)
 {
-	int idx, tcnt=0,fcnt=0;
-	for (idx = 0; idx <= n; idx++) 
+	int idx, tcnt = 0, fcnt = 0;
+	for (idx = 0; idx <= n; idx++)
 	{
 		if (!(idx % 2)) tcnt++;
 		if (!(idx % 5)) fcnt++;
-		if (!(idx % 10)) 
+		if (!(idx % 10))
 		{
 			printf()
 		}
 
 	}
 }
-int main(void) 
+int main(void)
 {
 	int n;
 	scanf("%d", n&);
@@ -468,9 +468,9 @@ int main(void)
 //	}
 //}
 
-int makenumber(int n) 
+int makenumber(int n)
 {
-	int sum=0;
+	int sum = 0;
 	sum += n;
 	while (n > 0)
 	{
@@ -481,12 +481,12 @@ int makenumber(int n)
 }
 int main(void)
 {
-	int idx,j=1;
+	int idx, j = 1;
 	unsigned long long int visited[10001] = { 0 };
-	unsigned long long int arr[10001] = {0};
+	unsigned long long int arr[10001] = { 0 };
 	for (idx = 1; idx <= 10000; idx++)
 	{
- 		if (arr[idx] == 0)
+		if (arr[idx] == 0)
 		{
 			printf("%d\n", idx);
 		}
@@ -494,7 +494,7 @@ int main(void)
 		if (j > 10000) continue;
 		if (arr[j] == 1)continue;
 		arr[j] = 1;
-		while (j<=10000) 
+		while (j <= 10000)
 		{
 			j = makenumber(j);
 			if (j >= 10000) break;
@@ -510,18 +510,18 @@ int main(void)
 //================================
 #if 0
 #include <stdio.h>
-int arr[1000001] = {0};
+int arr[1000001] = { 0 };
 void check(int m, int n)
 {
 	arr[1] = 1;
-	for (int i = 2; i <= n; i++) 
+	for (int i = 2; i <= n; i++)
 	{
-		for (int j = i + i; j <= n; j += i) 
+		for (int j = i + i; j <= n; j += i)
 		{
 			if (!(arr[j])) arr[j] = 1;
 		}
 	}
-	for (int i = m; i <= n; i++) 
+	for (int i = m; i <= n; i++)
 	{
 		if (!(arr[i])) printf("%d\n", i);
 	}
@@ -539,20 +539,20 @@ int main(void)
 	check(m, n);
 	return 0;
 }
-	//if (m <= 2) printf("%d\n", 2);
-	//arr[1]=1;
-	//int idx, j;
-	//for (idx = 2; idx <= n; idx++)
-	//{
-	//	if ((idx >= 3) &&(idx>=m)&&(!arr[idx])) printf("%d\n", idx);
-	//	for (j = 1; ; j++) {
-	//		if (idx*j > n) break;
-	//		if (arr[idx*j]==0)
-	//		{
-	//			arr[idx*j] = 1;
-	//		}
-	//	}
-	//}
+//if (m <= 2) printf("%d\n", 2);
+//arr[1]=1;
+//int idx, j;
+//for (idx = 2; idx <= n; idx++)
+//{
+//	if ((idx >= 3) &&(idx>=m)&&(!arr[idx])) printf("%d\n", idx);
+//	for (j = 1; ; j++) {
+//		if (idx*j > n) break;
+//		if (arr[idx*j]==0)
+//		{
+//			arr[idx*j] = 1;
+//		}
+//	}
+//}
 
 
 //int prime(int );
@@ -607,7 +607,7 @@ int main(void)
 	int n;
 	int number, sum = 0;
 	scanf("%d", &n);
-	for (int i = 0; i < n; i++) 
+	for (int i = 0; i < n; i++)
 	{
 		scanf("%d", &number);
 		if (PrimeNumber(number)) sum++;
@@ -624,21 +624,21 @@ int main(void)
 
 int main(void)
 {
-	unsigned long long int min=5000/3;
+	unsigned long long int min = 5000 / 3;
 	int N;
 	scanf("%d", &N);
-	for (int i = 0; i <= N / 3; i++) 
+	for (int i = 0; i <= N / 3; i++)
 	{
-		for (int j = 0; j <= N / 5; j++) 
+		for (int j = 0; j <= N / 5; j++)
 		{
 			if ((i * 3 + j * 5) > N) break;
-			else if ((i * 3 + j * 5) == N) 
+			else if ((i * 3 + j * 5) == N)
 			{
 				if ((i + j) < min) min = i + j;
 			}
 		}
 	}
-	if (min == 5000 / 3) 
+	if (min == 5000 / 3)
 	{
 		printf("%d", -1);
 	}
@@ -734,31 +734,31 @@ char stack[1000000 + 10];
 
 void output(void);
 void changearr(void);
-int main(void) 
+int main(void)
 {
 	fgets(strings, 100000 + 10, stdin);
 	lens = strlen(strings);
 	changearr();
 	output();
-	
+
 	return 0;
 }
-void output(void) 
+void output(void)
 {
 	for (int i = 0; i < lens - 1; i++)
 	{
 		printf("%c", strings[i]);
 	}
 }
-void changearr(void) 
+void changearr(void)
 {
 	int start, end;
-	for (int i = 0; i < lens-1; i++) 
+	for (int i = 0; i < lens - 1; i++)
 	{
 		if (strings[i] == '\n') break;
-		if (strings[i] == '<') 
+		if (strings[i] == '<')
 		{
-			while (1) 
+			while (1)
 			{
 				if (strings[i] == '>') break;
 				i++;
@@ -767,23 +767,23 @@ void changearr(void)
 		}
 		if (strings[i] == ' ') continue;
 		//정상적인 문자면
-		else 
+		else
 		{
 			start = i;
-			while (1) 
+			while (1)
 			{
- 				if (strings[i + 1] == ' ' || strings[i+1]=='\n' || strings[i+1]=='\0'|| strings[i+1]=='<'|| strings[i + 1] == '>')
+				if (strings[i + 1] == ' ' || strings[i + 1] == '\n' || strings[i + 1] == '\0' || strings[i + 1] == '<' || strings[i + 1] == '>')
 				{
 					end = i;
 					break;
 				}
 				i++;
 			}
-			for (int i = 0; i <=(end-start)/2; i++) 
+			for (int i = 0; i <= (end - start) / 2; i++)
 			{
 				int temp;
-				temp = strings[start+i];
-				strings[start+i] = strings[end - i];
+				temp = strings[start + i];
+				strings[start + i] = strings[end - i];
 				strings[end - i] = temp;
 			}
 		}
@@ -806,10 +806,10 @@ char alph[] = { "abcdefghizklmnopqrstuvwxyz" };
 
 int main(void)
 {
-	char record['z'-'a'+1];
+	char record['z' - 'a' + 1];
 	char word;
 	int lengths;
-	for (int i = 0; i < SIZE(record); i++) 
+	for (int i = 0; i < SIZE(record); i++)
 	{
 		record[i] = -1;
 	}
@@ -817,8 +817,8 @@ int main(void)
 	for (int i = 0;; i++)
 	{
 		scanf("%c", &word);
-		if (word == '\n') 
-		{ 
+		if (word == '\n')
+		{
 			lengths = i;
 			break;
 		}
@@ -846,10 +846,10 @@ int main(void)
 	int n;
 	char word[20];
 	scanf("%d", &T);
-	for (int i=0; i < T; i++) 
+	for (int i = 0; i < T; i++)
 	{
 		scanf("%d %s", &n, &word);
-		for (int start = 0; start < strlen(word); start++) 
+		for (int start = 0; start < strlen(word); start++)
 		{
 			for (int j = 0; j < n; j++)
 			{
@@ -875,7 +875,7 @@ int main(void)
 #if 0
 #include <stdio.h>
 #include <string.h>
-void changeword(char [], int);
+void changeword(char[], int);
 
 int main(void)
 {
@@ -883,29 +883,29 @@ int main(void)
 	char text[1001];
 	char temp;
 	char word[20];
-	int cnt=0;
+	int cnt = 0;
 	scanf("%d", &T);
-	
-	for (int i = 0; i < T; i++) 
+
+	for (int i = 0; i < T; i++)
 	{
 		gets(text);
 		//마지막 글자 확인 꼭
-		for (int j = 0; j < strlen(text) - 1; j++) 
+		for (int j = 0; j < strlen(text) - 1; j++)
 		{
-			if ((text[j + 1] == ' ')) 
+			if ((text[j + 1] == ' '))
 			{
 				changeword(word, cnt);
 				cnt = 0;
 				word[20];
 				continue;
 			}
-			if (text[j] ==' ') printf(" ");
-			else 
-			{	
+			if (text[j] == ' ') printf(" ");
+			else
+			{
 				word[cnt] = text[j];
 				cnt++;
 			}
-		}	
+		}
 	}
 }
 void changeword(char word[], int len)
@@ -913,7 +913,7 @@ void changeword(char word[], int len)
 	for (int i = len; i >= 0; i--)
 	{
 		printf("%c", word[i]);
-	}	
+	}
 }
 #endif
 //================================
@@ -922,7 +922,7 @@ void changeword(char word[], int len)
 #if 0
 #include <stdio.h>
 #include <string.h>
-int alph[('z'-'a')+10];
+int alph[('z' - 'a') + 10];
 int main(void)
 {
 	char array[1000010];
@@ -954,7 +954,7 @@ int main(void)
 		if (maxx < alph[index])
 		{
 			cnt = 1;
-			word = 'A'+index;
+			word = 'A' + index;
 			maxx = alph[index];
 		}
 	}
@@ -1020,18 +1020,18 @@ int main(void)
 {
 	int n;
 	scanf("%d", &n);
-	for (int i = 0; i <= n; i++) 
+	for (int i = 0; i <= n; i++)
 	{
 		pibo[i] = pibonacci(i);
 	}
 	printf("%d", pibo[n]);
 	return 0;
 }
-int pibonacci(int n) 
+int pibonacci(int n)
 {
 	if (n == 0) return 0;
 	if (n == 1) return 1;
-	else return pibonacci(n-1) + pibonacci(n - 2);
+	else return pibonacci(n - 1) + pibonacci(n - 2);
 }
 #endif
 
@@ -1041,9 +1041,9 @@ int pibonacci(int n)
 //---------------------------------------------------------------------
 #if 0
 #include <stdio.h>
-int main(void) 
+int main(void)
 {
-	
+
 	// - * 4배수, 재귀함수가 뭔가요? 부터 선비에게 찾아와서 물었어 부분 n만큼 반복
 	return 0;
 	//라고 답변했지.
@@ -1064,7 +1064,7 @@ char b[3 + 2];
 
 char* compare(void);
 void change(char a[], char b[]);
-int main(void) 
+int main(void)
 {
 	char* result;
 	scanf("%s %s", a, b);
@@ -1073,9 +1073,9 @@ int main(void)
 	printf("%s", result);
 	return 0;
 }
-char* compare(void) 
+char* compare(void)
 {
-	for (int i = 0; i < 3; i++) 
+	for (int i = 0; i < 3; i++)
 	{
 		if (a[i] > b[i]) return a;
 		else if (a[i] < b[i]) return b;
@@ -1083,7 +1083,7 @@ char* compare(void)
 	}
 	return a;
 }
-void change(char a[], char b[]) 
+void change(char a[], char b[])
 {
 	char temp;
 	temp = a[0];
@@ -1101,25 +1101,25 @@ void change(char a[], char b[])
 #if 0
 #include <stdio.h>
 #include <string.h>
-int main(void) 
+int main(void)
 {
 	// 마지막에 길이 플러스
 	int lens;
 	int sum = 0;
 	char problem[15 + 2];
-	char phones[15 + 2][4+2] = { {0},{0}, {'A','B','C'}, {'D','E','F'},{'G','H','I'},{'J','K','L'},{'M','N','O'},{'P','Q','R','S'},{'T','U','V'},{'W','X','Y','Z'},{'0'} };
+	char phones[15 + 2][4 + 2] = { {0},{0}, {'A','B','C'}, {'D','E','F'},{'G','H','I'},{'J','K','L'},{'M','N','O'},{'P','Q','R','S'},{'T','U','V'},{'W','X','Y','Z'},{'0'} };
 	scanf("%s", problem);
 	lens = strlen(problem);
 	int phonelens = 11;
 	int yes = 0;
-	for (int i = 0; i < lens; i++) 
+	for (int i = 0; i < lens; i++)
 	{
-		for (int j = 0; j < phonelens; j++) 
+		for (int j = 0; j < phonelens; j++)
 		{
 			yes = 0;
-			for (int z = 0; z < strlen(phones[j]); z++) 
+			for (int z = 0; z < strlen(phones[j]); z++)
 			{
-				
+
 				if (phones[j][z] == problem[i])
 				{
 					sum += j;
@@ -1163,22 +1163,22 @@ void input(void)
 	for (int i = len; i > 0; i--)
 	{
 		if (i > 0) {
-			if (words[i] == '=') 
+			if (words[i] == '=')
 			{
 				if ((words[i - 1] == 'c') || (words[i - 1] == 'd') || (words[i - 1] == 's'))
 				{
 					sum--;
 				}
-				else if ((words[i - 1] == 'z')) 
+				else if ((words[i - 1] == 'z'))
 				{
 					sum--;
-					if ((i > 1)&&(words[i - 2]=='d'))
+					if ((i > 1) && (words[i - 2] == 'd'))
 					{
 						sum--;
 					}
 				}
 			}
-			else if (words[i] == '-') 
+			else if (words[i] == '-')
 			{
 				if ((words[i - 1] == 'c') || (words[i - 1] == 'd'))
 				{
@@ -1186,9 +1186,9 @@ void input(void)
 				}
 
 			}
-			else if (words[i]=='j') 
+			else if (words[i] == 'j')
 			{
-				if ((words[i - 1] == 'l') || (words[i - 1] == 'n')) 
+				if ((words[i - 1] == 'l') || (words[i - 1] == 'n'))
 				{
 					sum--;
 				}
@@ -1204,7 +1204,7 @@ void input(void)
 #include <stdio.h>
 #include <string.h>
 char croatia[8 + 2][6 + 2] = { {"c="},{"c-"}, {"dz="}, {"d-"}, {"lj" }, {"nj"}, {"s="}, {"z="} };
-char words[300+100];
+char words[300 + 100];
 int len;
 int croidx;
 int sum = 0;
@@ -1213,17 +1213,17 @@ void input(void);
 int find(int);
 int compare(int, int);
 
-int main(void) 
+int main(void)
 {
 	input();
-	printf("%d", strlen(words)-sum);
+	printf("%d", strlen(words) - sum);
 	return 0;
 }
-void input(void) 
+void input(void)
 {
 	scanf("%s", words);
 	len = strlen(words);
-	for (int i = 0; i < len; i++) 
+	for (int i = 0; i < len; i++)
 	{
 		sum += find(i);
 	}
@@ -1241,10 +1241,10 @@ int find(int wordidx)
 	}
 	return 0;
 }
-int compare(int wordidx ,int croidx)
+int compare(int wordidx, int croidx)
 {
 	int r = strlen(croatia[croidx]);
-	for (int i = 0;  i < r; i++) 
+	for (int i = 0; i < r; i++)
 	{
 		if (words[wordidx] != croatia[croidx][i]) return 0;
 		else wordidx++;
@@ -1256,7 +1256,7 @@ int compare(int wordidx ,int croidx)
 #include <stdio.h>
 #include <string.h>
 char stack[100 + 10];
-int stackidx=0;
+int stackidx = 0;
 char alph[30] = { "ABCDEFGHIJKLMNOPQRSTUVWXYZ" };
 char croatia[6 + 2][2 + 2] = { {"c="},{"c-"},{"dz="},{"d-"},{"lj"},{"nj"},{"s="},{"z="} };
 char words[100 + 10];
@@ -1267,11 +1267,11 @@ int main(void)
 {
 	scanf("%s", words);
 	int lens = strlen(words);
-	for (int i = 0; i < lens; i++) 
+	for (int i = 0; i < lens; i++)
 	{
 		stack[stackidx] = words[i];
 		stackidx++;
-		if (strlen(stack) > 2) 
+		if (strlen(stack) > 2)
 		{
 			check();
 		}
@@ -1291,52 +1291,52 @@ int main(void)
 #include <stdio.h>
 #include <string.h>
 
-char alph[100] = {"abcdefghijklmnopqrstuvwxyz"};
+char alph[100] = { "abcdefghijklmnopqrstuvwxyz" };
 int sum = 0;
-char temp[100+10][100 + 10];
+char temp[100 + 10][100 + 10];
 void input(void);
 int n;
-int find(int );
-int main(void) 
+int find(int);
+int main(void)
 {
 	input();
 	return 0;
 }
-void input(void) 
+void input(void)
 {
 	scanf("%d", &n);
 	for (int i = 0; i < n; i++)
 	{
 		scanf("%s", &temp[i]);
 	}
-	for (int i = 0; i < n; i++) 
+	for (int i = 0; i < n; i++)
 	{
 		sum += find(i);
 	}
 	printf("%d", sum);
 }
-int find(int idx) 
+int find(int idx)
 {
 	int visited[100] = { 0 };
 	int lens = strlen(temp[idx]);
 	if (lens == 1) return 1;
-	for (int i = 0; i < lens; i++) 
+	for (int i = 0; i < lens; i++)
 	{
-		
-		if (i < lens -1) 
+
+		if (i < lens - 1)
 		{
 			//앞뒤 같으면 패스
-			if (temp[idx][i] == temp[idx][i + 1]) 
+			if (temp[idx][i] == temp[idx][i + 1])
 			{
 				if (visited[(temp[idx][i]) - 'a'])
 				{
 					return 0;
 				}
-				else 
+				else
 				{
 					continue;
 				}
-			} 
+			}
 			else
 			{
 				//앞뒤 다르면 밑에꺼
@@ -1344,15 +1344,15 @@ int find(int idx)
 				{
 					return 0;
 				}
-				else 
+				else
 				{
 					visited[(temp[idx][i]) - 'a'] = 1;
 				}
 			}
 		}
-		else 
+		else
 		{
-			if (temp[idx][i] == temp[idx][i - 1]) 
+			if (temp[idx][i] == temp[idx][i - 1])
 			{
 				return 1;
 			}
@@ -1362,7 +1362,7 @@ int find(int idx)
 				{
 					return 0;
 				}
-				else 
+				else
 				{
 					visited[(temp[idx][i]) - 'a'] = 1;
 				}
@@ -1381,7 +1381,7 @@ int find(int idx)
 int n;
 int arr[1000 + 10];
 int maxx = 0;
-int size[1000 + 10] = {0};
+int size[1000 + 10] = { 0 };
 void input(void);
 void find(void);
 
@@ -1396,24 +1396,24 @@ void input(void)
 	scanf("%d", &n);
 	for (int i = 0; i < n; i++)
 	{
-		scanf("%d",&arr[i]);
+		scanf("%d", &arr[i]);
 	}
 }
 void find(void)
 {
-	for (int i = 0; i < n-1; i++) 
+	for (int i = 0; i < n - 1; i++)
 	{
-		if (arr[i] < arr[i + 1]) 
+		if (arr[i] < arr[i + 1])
 		{
-			size[i+1] = size[i] + (arr[i + 1] - arr[i]);
-			if (maxx < size[i+1]) 
+			size[i + 1] = size[i] + (arr[i + 1] - arr[i]);
+			if (maxx < size[i + 1])
 			{
-				maxx = size[i+1];
+				maxx = size[i + 1];
 			}
 		}
-		else 
+		else
 		{
-			size[i+1] = 0;
+			size[i + 1] = 0;
 		}
 	}
 	printf("%d", maxx);
@@ -1428,49 +1428,49 @@ void find(void)
 #define SIZE(a) (sizeof(a)/sizeof(a[0]))
 
 void make(int y1, int x1, int y2, int x2, int);
-unsigned long long arr[1001 + 10][1001 + 10] = {0};
-int main(void) 
+unsigned long long arr[1001 + 10][1001 + 10] = { 0 };
+int main(void)
 {
 	int n;
 	int y1, x1, yd, xd;
-	int cnt=1;
+	int cnt = 1;
 	int max = 0;
 	int tempx = 0;
 	int tempy = 0;
 	scanf("%d", &n);
 
-	for (;;) 
+	for (;;)
 	{
 		scanf("%d %d %d %d", &y1, &x1, &yd, &xd);
 		tempy = y1 + yd;
 		tempx = x1 + xd;
-		if (tempy < tempx) 
+		if (tempy < tempx)
 		{
-			if (max < tempx) 
+			if (max < tempx)
 			{
 				max = tempx;
 			}
 		}
-		else 
+		else
 		{
-			if (max < tempy) 
+			if (max < tempy)
 			{
 				max = tempy;
 			}
 		}
-		make(y1, x1, y1+yd, x1+xd, cnt);
+		make(y1, x1, y1 + yd, x1 + xd, cnt);
 		cnt++;
 		if (cnt > n) break;
 	}
 }
-void make(int y1, int x1, int y2, int x2, int n) 
+void make(int y1, int x1, int y2, int x2, int n)
 {
 	int i, j;
-	for (i = 0; i < SIZE(arr); i++) 
+	for (i = 0; i < SIZE(arr); i++)
 	{
-		for (j = 0; j < SIZE(arr); j++) 
+		for (j = 0; j < SIZE(arr); j++)
 		{
-			if ((y1<=i && i <= y2) && (x1<=j && j<= x2))
+			if ((y1 <= i && i <= y2) && (x1 <= j && j <= x2))
 			{
 				arr[i][j] = n;
 			}
@@ -1490,15 +1490,15 @@ void make(int y1, int x1, int y2, int x2, int n)
 // push면 숫자까지 받아서 스택에 넣고
 // pop은 stackpoint 체크
 // 
-int stack[100000 + 10] = {0};
-int main(void) 
+int stack[100000 + 10] = { 0 };
+int main(void)
 {
 	int N;
 	int i;
 	int number;
 	int SP;
 	int trash;
-	
+
 	scanf("%d", &N);
 	SP = N;
 	for (i = 0; i < N; i++)
@@ -1513,20 +1513,20 @@ int main(void)
 		}
 		else if (!(strcmp(temp, "pop")))
 		{
-			if (stack[SP]!=0) 
+			if (stack[SP] != 0)
 			{
 				printf("%d\n", stack[SP]);
-				trash =stack[SP];
+				trash = stack[SP];
 				SP++;
 			}
-			else 
+			else
 			{
 				printf("%d\n", -1);
 			}
 		}
 		else if (!(strcmp(temp, "top")))
 		{
-			if (stack[SP]!=0) 
+			if (stack[SP] != 0)
 			{
 				printf("%d\n", stack[SP]);
 			}
@@ -1538,12 +1538,12 @@ int main(void)
 		}
 		else if (!(strcmp(temp, "empty")))
 		{
-			if (SP ==N) printf("%d\n", 1);
+			if (SP == N) printf("%d\n", 1);
 			else printf("%d\n", 0);
 		}
 	}
 
-	
+
 }
 #endif
 
@@ -1560,8 +1560,8 @@ int main(void)
 #include <stdio.h>
 #include <string.h>
 
- 
-int main(void) 
+
+int main(void)
 {
 	int n;
 	int len;
@@ -1569,22 +1569,22 @@ int main(void)
 	int result = 0;
 	char trash;
 	scanf("%d", &n);
-	for (int TC = 0; TC < n; TC++) 
+	for (int TC = 0; TC < n; TC++)
 	{
-		char words[100000 + 10] = {0};
-		char stack[100000 + 10] = {0};
+		char words[100000 + 10] = { 0 };
+		char stack[100000 + 10] = { 0 };
 		int i;
 		int temp = 0;
 		scanf("%s", words);
 		len = strlen(words);
 		SP = len;
-		
-		for ( i = 0; i < len; i++) 
+
+		for (i = 0; i < len; i++)
 		{
-		//스택이 비어있으면
+			//스택이 비어있으면
 			if (words[i] == 'A')
 			{
-				if (stack[SP] != 'A' && stack[SP] != 'B') 
+				if (stack[SP] != 'A' && stack[SP] != 'B')
 				{
 					SP--;
 					stack[SP] = words[i];
@@ -1594,7 +1594,7 @@ int main(void)
 					SP--;
 					stack[SP] = words[i];
 				}
-				else if  (stack[SP] == 'A')
+				else if (stack[SP] == 'A')
 				{
 					//스택안을 비워줘야 필요한가?
 					//trash = stack[SP];
@@ -1628,7 +1628,7 @@ int main(void)
 				}
 			}
 		}
-		for (int j =len; j >0; j--)
+		for (int j = len; j > 0; j--)
 		{
 			if (stack[j] == 'A' || stack[j] == 'B')
 			{
@@ -1656,7 +1656,7 @@ int main(void)
 	int SP;
 	int result = 0;
 	char trash;
-		scanf("%d", &n);
+	scanf("%d", &n);
 	for (int TC = 0; TC < n; TC++)
 	{
 
@@ -1696,7 +1696,7 @@ int main(void)
 					//이부분 바꿔야할지도
 					temp = 1;
 				}
-				else 
+				else
 				{
 					stack[++SP] = words[i];
 
@@ -1711,7 +1711,7 @@ int main(void)
 				break;
 			}
 		}
-		
+
 		result += temp;
 	}
 	printf("%d", result);
@@ -1769,7 +1769,7 @@ int queue[MAX + 10];
 int FR = 0; BE = 0;
 int size = 0;
 
-void enque(int item) 
+void enque(int item)
 {
 	FR = (FR + 1) % MAX;
 	queue[FR] = item;
@@ -1781,39 +1781,39 @@ int deque()
 	size--;
 	return queue[BE];
 }
-int main(void) 
+int main(void)
 {
 	int i;
 	int n, k;
 	int result;
-	int cnt=0;
+	int cnt = 0;
 	int idx = 0;
 	scanf("%d %d", &n, &k);
 	//일단 초기화
-	for (i = 0; i < n; i++) 
+	for (i = 0; i < n; i++)
 	{
 		enque(i);
 	}
 	printf("<");
-	for (;;) 
+	for (;;)
 	{
-		for (cnt = 0; cnt<k; cnt++) 
+		for (cnt = 0; cnt < k; cnt++)
 		{
 			cnt %= k;
-			if (cnt == k-1) 
+			if (cnt == k - 1)
 			{
 				result = deque();
-				if (idx == n-1) 
+				if (idx == n - 1)
 				{
 					printf("%d", result + 1);
 				}
-				else 
+				else
 				{
 					printf("%d, ", result + 1);
 				}
 				idx++;
 			}
-			else 
+			else
 			{
 				enque(deque());
 			}
@@ -1826,49 +1826,90 @@ int main(void)
 #endif 
 
 
+/***********************************************************/
+// 2670 - 연속부분최대곱
+/***********************************************************/
+#if 0
+#include <stdio.h>
+int N;
+double nowvalue = 1;
+double maxx = 0;
+double arr[10000 + 10];
+double check(void)
+{
+	for (int i = 0; i < N; i++)
+	{
+		//		if (nowvalue < 1)
+		if (nowvalue*arr[i] < 1) //if (nowvalue < 1) 
+		{
+			nowvalue = arr[i];
+		}
+		else
+		{
+			nowvalue *= arr[i];
+		}
+		if (maxx < nowvalue) maxx = nowvalue;
+	}
+	return maxx;
+}
+void input(void)
+{
+	scanf("%d", &N);
+	for (int i = 0; i < N; i++)
+	{
+		scanf("%lf", &arr[i]);
+	}
+}
+int main(void)
+{
+	input();
+	printf("%.3f", check());
+	// 여기서부터 작성
+	return 0;
+}
+#endif
 #if 0
 #include <stdio.h>
 #define MAX 5000
 //N번 삭제, K번째 사람 삭제
-int Que[MAX +10];
+int Que[MAX + 10];
 int values;
-int front = 0, back = 0;
+int front = 0, rear = 0;
 void enque(int number);
 int deque(void);
 int main(void)
 {
 	int N, K;
-	int i;
-	int cnt=0;
-	int idx=0;
-	int end=0;
+	int cnt = 0;
+	int idx = 0;
+	int end = 0;
 	scanf("%d %d", &N, &K);
-	for (int j = 0; j < N; j++) 
+	for (int j = 0; j < N; j++)
 	{
-		enque(j+1);
+		enque(j + 1);
 	}
 	printf("<");
-	for (;;) 
+	for (;;)
 	{
 		if (cnt == N) break;
 		// 해당 순번에 deque 아니면 디큐한걸 인큐에
 		end = 0;
-		for (int c = 0; c < K; c++) 
+		for (int c = 0; c < K; c++)
 		{
-			if (c == K - 1) 
+			if (c == K - 1)
 			{
 				cnt++;
 				end = 1;
-				if (cnt == N) 
+				if (cnt == N)
 				{
 					printf("%d", deque());
 				}
-				else 
+				else
 				{
 					printf("%d, ", deque());
 				}
 			}
-			else 
+			else
 			{
 				enque(deque());
 			}
@@ -1877,15 +1918,15 @@ int main(void)
 	}
 	printf(">");
 }
-void enque(int number) 
+void enque(int number)
 {
-	Que[front] = number;
-	front = (front + 1) % MAX;
+	Que[rear] = number;
+	rear = (rear + 1) % MAX;
 }
-int deque(void) 
+int deque(void)
 {
-	values = Que[back];
-	back = (back + 1) % MAX;
+	values = Que[front];
+	front = (front + 1) % MAX;
 	return values;
 
 }
