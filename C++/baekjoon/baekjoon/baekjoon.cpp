@@ -1,4 +1,45 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
+﻿//================================재귀 recursion=======================================
+//------------------------------------------------------------------------------
+// 10994 - 별 찍기
+//------------------------------------------------------------------------------
+#if 1
+#endif
+
+
+//=========================문자열 string 연습=====================================
+//------------------------------------------------------------------------------
+// 2495. 연속구간
+//------------------------------------------------------------------------------
+#if 0
+#include <iostream>
+#include <string>
+
+void input(void) 
+{
+	char number[3][9];
+	std::string num;
+	/*for (int i = 0; i < 8; i++) 
+	{
+		std::cin >> a[i];
+	}*/
+	for (int i = 0; i < 3; i++) 
+	{
+		std::cin >> num;
+		number[i] = num;
+		std::cout << a;
+	}
+	
+	
+	
+}
+int main(void)
+{
+	input();
+}
+#endif
+
+//----------------------------------------------------------------------------
+// 다익스트라 알고리즘 문제 연습
 //------------------------------------------------------------------------------
 // 다익스트라 연습
 //------------------------------------------------------------------------------
@@ -7,7 +48,7 @@
 #include<iostream>
 int number = 6;
 int INF = 10e9;
-int arr[6][6] = { 
+int arr[6][6] = {
 	{0, 2, 5, 1, INF,INF},
 	{2,0,3,2,INF,INF},
 	{5,3,0,3,1,5},
@@ -17,13 +58,13 @@ int arr[6][6] = {
 };
 bool visit[6];
 int distance[6];
-int getSmallIndex() 
+int getSmallIndex()
 {
 	int min = INF;
 	int idx = 0;
-	for (int i = 0; i < number; i++) 
+	for (int i = 0; i < number; i++)
 	{
-		if (distance[i] < min && !visit[i]) 
+		if (distance[i] < min && !visit[i])
 		{
 			min = distance[i];
 			idx = i;
@@ -32,22 +73,22 @@ int getSmallIndex()
 	return idx;
 }
 
-void dijkstra(int start) 
+void dijkstra(int start)
 {
-	for (int i = 0; i < number; i++) 
+	for (int i = 0; i < number; i++)
 	{
 		distance[i] = arr[start][i];
 	}
 	visit[start] = true;
-	for (int i = 0; i < number - 2; i++) 
+	for (int i = 0; i < number - 2; i++)
 	{
 		int current = getSmallIndex();
 		visit[current] = true;
-		for (int j = 0; j < 6; j++) 
+		for (int j = 0; j < 6; j++)
 		{
-			if (!visit[j]) 
+			if (!visit[j])
 			{
-				if (distance[current] + arr[current][j] < distance[j]) 
+				if (distance[current] + arr[current][j] < distance[j])
 				{
 					distance[j] = distance[current] + arr[current][j];
 				}
@@ -55,15 +96,15 @@ void dijkstra(int start)
 		}
 	}
 }
-int main(void) 
+int main(void)
 {
 
 	dijkstra(0);
-	for (auto i : distance) 
+	for (auto i : distance)
 	{
 		std::cout << i << ' ';
 	}
-	
+
 
 }
 #endif 
@@ -97,7 +138,7 @@ void dijkstra(void)
 
 		for (j = 1; j <= vertex; j++)
 		{
- 			if (visit[j] == 0 && min > dist[j])
+			if (visit[j] == 0 && min > dist[j])
 			{
 				min = dist[j];
 				v = j;
@@ -163,41 +204,6 @@ int main(void)
 	return 0;
 }
 #endif
-
-//------------------------------------------------------------------------------
-// 2495 . 연속구간
-//------------------------------------------------------------------------------
-#if 0
-#include <iostream>
-#include <string>
-
-void input(void) 
-{
-	char number[3][9];
-	std::string num;
-	/*for (int i = 0; i < 8; i++) 
-	{
-		std::cin >> a[i];
-	}*/
-	for (int i = 0; i < 3; i++) 
-	{
-		std::cin >> num;
-		number[i] = num;
-		std::cout << a;
-	}
-	
-	
-	
-}
-int main(void)
-{
-	input();
-}
-#endif
-
-//----------------------------------------------------------------------------
-// 다익스트라 알고리즘 문제 연습
-
 //------------------------------------------------------------------------------
 // 18352 특정 거리의 도시 찾기
 //------------------------------------------------------------------------------
@@ -678,13 +684,14 @@ int main()
 #endif
 
 //------------------------------------------------------------------------------
-// 
+// 2178 - 미로 탐색
 //------------------------------------------------------------------------------
-#if 0
-
-int main()
+#if 1
+#include <iostream>
+int main(void)
 {
 
+	return 0;
 }
 #endif
 
