@@ -1,47 +1,317 @@
-Ôªø//================================Ïû¨Í∑Ä recursion=======================================
-//------------------------------------------------------------------------------
-// 10994 - Î≥Ñ Ï∞çÍ∏∞
-//------------------------------------------------------------------------------
-#if 1
-#endif
-
-
-//=========================Î¨∏ÏûêÏó¥ string Ïó∞Ïäµ=====================================
-//------------------------------------------------------------------------------
-// 2495. Ïó∞ÏÜçÍµ¨Í∞Ñ
-//------------------------------------------------------------------------------
+//=================================================================================
+// 1753 - √÷¥‹ ∞Ê∑Œ
+//=================================================================================
 #if 0
 #include <iostream>
-#include <string>
-
-void input(void) 
+#include <vector>
+#include <queue>
+#define INF ((int)1e9)
+using namespace std;
+int V, E, K;
+vector<pair<int, int>> arr[20000 + 10];
+int D[20000 + 10];
+priority_queue<pair<int, int>> pq;
+void input(void)
 {
-	char number[3][9];
-	std::string num;
-	/*for (int i = 0; i < 8; i++) 
+	cin >> V >> E >> K;
+
+	for (int i = 0; i < E; i++)
 	{
-		std::cin >> a[i];
-	}*/
-	for (int i = 0; i < 3; i++) 
-	{
-		std::cin >> num;
-		number[i] = num;
-		std::cout << a;
+		int u, v, w; cin >> u >> v >> w;
+		arr[u].push_back({ w, v });
 	}
-	
-	
-	
+}
+void init(void)
+{
+	for (int i = 1; i <= V; i++)
+	{
+		D[i] = INF;
+	}
+}
+void dijkstra(int start)
+{
+	D[start] = 0;
+	pq.push({ 0, start });
+	while (!pq.empty())
+	{
+		int nowvalue = -(pq.top().first);
+		int nowpos = pq.top().second;
+		pq.pop();
+
+		if (D[nowpos] < nowvalue) continue;
+		int lens = arr[nowpos].size();
+		for (int i = 0; i < lens; i++)
+		{
+			int nextvalue = arr[nowpos][i].first;
+			int next = arr[nowpos][i].second;
+
+			if ((nextvalue + nowvalue) < D[next])
+			{
+				D[next] = nextvalue + nowvalue;
+				pq.push({ -D[next], next });
+			}
+		}
+	}
+	for (int i = 1; i <= V; i++)
+	{
+		if (D[i] == (int)INF)
+		{
+			cout << "INF" << '\n';
+		}
+		else cout << D[i] << '\n';
+	}
 }
 int main(void)
 {
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
+	cout.tie(nullptr);
 	input();
+	init();
+	dijkstra(K);
+	return 0;
+}
+
+#endif
+
+//=================================================================================
+// 18352 - ∆Ø¡§ ∞≈∏Æ¿« µµΩ√ √£±‚
+//=================================================================================
+#if 0
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <cstring>
+#define INF (int)1e9
+using namespace std;
+
+int N, M, K, X;
+vector<pair<int, int>> arr[300000 + 10];
+priority_queue<pair<int, int>> pq;
+int D[300000 + 10] = { 0 };
+void input(void)
+{
+	memset(arr, 0, sizeof(arr));
+	cin >> N >> M >> K >> X;
+	for (int i = 0; i < M; i++)
+	{
+		int start, to; cin >> start >> to;
+		arr[start].push_back({ 1, to });
+	}
+}
+void init(void)
+{
+	//∞≈∏Æ¡§∫∏ √ ±‚»≠
+	for (int i = 1; i <= N; i++)
+	{
+		D[i] = INF;
+	}
+}
+void dijkstra(int start)
+{
+	D[start] = 0;
+	pq.push({ 0, start });
+	while (!pq.empty())
+	{
+		int current_value = -(pq.top().first);
+		int current_position = pq.top().second;
+		pq.pop();
+		if (D[current_position] < current_value) continue;
+		int lens = arr[current_position].size();
+		for (int i = 0; i < lens; i++)
+		{
+			int destination_value = arr[current_position][i].first;
+			int destination_position = arr[current_position][i].second;
+
+			if (D[destination_position] > current_value + destination_value)
+			{
+				D[destination_position] = current_value + destination_value;
+				pq.push({ -(D[destination_position]), destination_position });
+			}
+		}
+	}
+	int isk = false;
+	for (int i = 1; i <= N; i++)
+	{
+		if (D[i] == K)
+		{
+			cout << i << '\n';
+			isk = true;
+		}
+	}
+	if (!isk) cout << -1;
+
+}
+int main(void)
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
+	cout.tie(nullptr);
+	input();
+	init();
+	dijkstra(X);
+	return 0;
+}
+#endif
+
+//======================================================================================================
+// 1916 - √“º“∫ÒøÎ ±∏«œ±‚
+//======================================================================================================
+#if 0
+#include <iostream>
+#include<vector>
+#include<queue>
+#define INF 1E9
+int N, M;
+int start, destination;
+std::vector<std::pair<int, int>> arr[1000 + 10];
+int d[1000 + 10];
+void input(void)
+{
+	std::cin >> N >> M;
+	for (int i = 0; i < M; i++)
+	{
+		int from, to, value;
+		std::cin >> from >> to >> value;
+		arr[from].push_back({ value,to });
+	}
+	std::cin >> start >> destination;
+}
+void distance_init()
+{
+	for (int i = 1; i <= N; i++)
+	{
+		d[i] = INF;
+	}
+}
+void dijkstra(int ST)
+{
+	d[ST] = 0;
+	std::priority_queue<std::pair<int, int>> PQ;
+	PQ.push({ 0,ST });
+	while (!(PQ.empty()))
+	{
+		int c_cost = -PQ.top().first;
+		int c = PQ.top().second;
+		PQ.pop();
+
+		if (d[c] < c_cost) continue;
+		for (int i = 0; i < arr[c].size(); i++)
+		{
+			int n_cost = arr[c][i].first;
+			int next = arr[c][i].second;
+			if (d[next] > n_cost + c_cost)
+			{
+				d[next] = n_cost + c_cost;
+				PQ.push({ -d[next], next });
+			}
+		}
+	}
+}
+void solve(void)
+{
+	dijkstra(start);
+	std::cout << d[destination];
+}
+int main()
+{
+	input();
+	distance_init();
+	solve();
+}
+#endif
+
+
+//======================================================================================================
+// 4485 - ≥Ïªˆ ø  ¿‘¿∫ æ÷∞° ¡©¥Ÿ¡ˆ
+//======================================================================================================
+#if 0
+#include <iostream>
+#include <vector>
+#include <queue>
+#define INF (int)(1e9)
+using namespace std;
+int N;
+int cnt = 1;
+vector<std::vector<int>> arr(125 + 10, vector<int>(125 + 10));
+vector<std::vector<int>>d(125 + 10, vector<int>(125 + 10));
+int visited[125 + 10][125 + 10];
+int Y[] = { 0, 1, 0 ,-1 };
+int X[] = { 1, 0,-1,0 };
+
+void input(void)
+{
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			int numb;
+			cin >> numb;
+			arr[i][j] = numb;
+		}
+	}
+}
+void init(void)
+{
+	for (int i = 0; i <= N; i++)
+	{
+		for (int j = 0; j <= N; j++)
+		{
+			arr[i][j] = 0;
+			d[i][j] = INF;
+			visited[i][j] = 0;
+		}
+	}
+}
+void solve(void)
+{
+	priority_queue<std::vector<int>> PQ;
+	d[0][0] = arr[0][0];
+	PQ.push({ arr[0][0] ,0, 0, });
+	while (!(PQ.empty()))
+	{
+		int currentY = PQ.top()[1];
+		int currentX = PQ.top()[2];
+		int current_cost = d[currentY][currentX];
+		PQ.pop();
+		for (int i = 0; i < 4; i++)
+		{
+			int dy = currentY + Y[i];
+			int dx = currentX + X[i];
+			if (dy<0 || dx<0 || dy>N - 1 || dx>N - 1) continue;
+			if (d[dy][dx] < current_cost) continue;
+			if (d[dy][dx] > arr[dy][dx] + current_cost)
+			{
+				d[dy][dx] = arr[dy][dx] + current_cost;
+				PQ.push({ -d[dy][dx],dy, dx });
+			}
+		}
+	}
+	cout << "Problem " << cnt << ": " << d[N - 1][N - 1] << '\n';
+	cnt++;
+
+}
+int main(void)
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+	while (1)
+	{
+		cin >> N;
+
+		if (N == 0) break;
+		init();
+		input();
+		solve();
+	}
 }
 #endif
 
 //----------------------------------------------------------------------------
-// Îã§ÏùµÏä§Ìä∏Îùº ÏïåÍ≥†Î¶¨Ï¶ò Î¨∏Ï†ú Ïó∞Ïäµ
+// ¥Ÿ¿ÕΩ∫∆Æ∂Û æÀ∞Ì∏Æ¡Ú πÆ¡¶ ø¨Ω¿
 //------------------------------------------------------------------------------
-// Îã§ÏùµÏä§Ìä∏Îùº Ïó∞Ïäµ
+// ¥Ÿ¿ÕΩ∫∆Æ∂Û ø¨Ω¿
 //------------------------------------------------------------------------------
 #if 0
 #include<cstdio>
@@ -205,7 +475,7 @@ int main(void)
 }
 #endif
 //------------------------------------------------------------------------------
-// 18352 ÌäπÏ†ï Í±∞Î¶¨Ïùò ÎèÑÏãú Ï∞æÍ∏∞
+// 18352 ∆Ø¡§ ∞≈∏Æ¿« µµΩ√ √£±‚
 //------------------------------------------------------------------------------
 #if 0
 #include <iostream>
@@ -213,38 +483,38 @@ int main(void)
 #include <queue>
 #define INF 1e9
 int V, E, K;
-// Îç∞Ïù¥ÌÑ∞ ÏûÖÎ†•
+// µ•¿Ã≈Õ ¿‘∑¬
 std::vector<std::pair <int, int>> arr[20000 + 10];
 int distance[20000 + 10];
 
-// ÏûÖÎ†• Î∞õÍ∏∞
-void input() 
+// ¿‘∑¬ πﬁ±‚
+void input()
 {
 	std::cin >> V >> E >> K;
-	for (int i=0; i<E; i++) 
+	for (int i = 0; i < E; i++)
 	{
 		int from, to, value;
-		std::cin >> from >> to >> value; 
-		// 1ÏóêÏÑú 2Í∞ÑÏÑ†ÍπåÏßÄ 3Í±∏Î¶∞Îã§ from 1, to 2, 3 value
-		arr[from].push_back({value,  to });
+		std::cin >> from >> to >> value;
+		// 1ø°º≠ 2∞£º±±Ó¡ˆ 3∞…∏∞¥Ÿ from 1, to 2, 3 value
+		arr[from].push_back({ value,  to });
 	}
 }
-void distance_Init(void) 
+void distance_Init(void)
 {
 	//memset(distance, INF, sizeof(distance));
-	// Î∞©Î¨∏ ÏµúÎåÄÍ∞íÏúºÎ°ú Ï¥àÍ∏∞Ìôî
+	// πÊπÆ √÷¥Î∞™¿∏∑Œ √ ±‚»≠
 	for (int i = 1; i <= V; i++)
 	{
 		distance[i] = INF;
 	}
 }
-void dijkstra(int start) 
+void dijkstra(int start)
 {
-	// Ïö∞ÏÑ†ÏàúÏúÑ ÌÅê
+	// øÏº±º¯¿ß ≈•
 	std::priority_queue<std::pair<int, int>> pq;
 	pq.push({ 0, start });
 	distance[start] = 0;
-	while (!pq.empty()) 
+	while (!pq.empty())
 	{
 		int cur_cost = -pq.top().first;
 		int current = pq.top().second;
@@ -252,12 +522,12 @@ void dijkstra(int start)
 
 		if (distance[current] < cur_cost) continue;
 		int lens = arr[current].size();
-		for (int i = 0; i < lens; i++) 
+		for (int i = 0; i < lens; i++)
 		{
 			int next_cost = arr[current][i].first;
 			int next = arr[current][i].second;
-			
-			if (distance[next] > next_cost + cur_cost) 
+
+			if (distance[next] > next_cost + cur_cost)
 			{
 				distance[next] = next_cost + cur_cost;
 				pq.push({ -distance[next] , next });
@@ -265,7 +535,7 @@ void dijkstra(int start)
 		}
 	}
 }
-int main(void) 
+int main(void)
 {
 	std::ios::sync_with_stdio(false);
 	std::cin.tie(NULL);
@@ -274,17 +544,17 @@ int main(void)
 	input();
 	distance_Init();
 	dijkstra(K);
-	for (int i = 1; i <= V; i++) 
+	for (int i = 1; i <= V; i++)
 	{
-		if (distance[i] == INF) 
+		if (distance[i] == INF)
 		{
 			std::cout << "INF" << '\n';
 		}
-		else 
+		else
 		{
 			std::cout << distance[i] << '\n';
 		}
-		
+
 	}
 	return 0;
 }
@@ -299,21 +569,21 @@ using std::cout;
 using std::cin;
 
 int N, M, K, X;
-void input() 
-{	
+void input()
+{
 	cin >> N >> M >> K >> X;
-	//2Ï∞®Ïõê Î∞∞Ïó¥ ÏÑ†Ïñ∏
+	//2¬˜ø¯ πËø≠ º±æ
 	int **arr = new int*[N + 1];
 	for (int i = 0; i < N + 1; i++) {
 		arr[i] = new int[N + 1];
-		//0ÏúºÎ°ú Ï¥àÍ∏∞Ìôî
+		//0¿∏∑Œ √ ±‚»≠
 		memset(arr[i], 0, sizeof(int)*(N + 1));
 	}
-	//visited Î∞∞Ïó¥
+	//visited πËø≠
 	int *visited = new int[N + 1];
 	memset(visited, 0, sizeof(int)*(N + 1));
 
-	// Î∞∞Ïó¥ Í∞í Î™®Îëê INFÎ°ú Ìï†Îãπ
+	// πËø≠ ∞™ ∏µŒ INF∑Œ «“¥Á
 	for (int r = 0; r < N; r++)
 	{
 		for (int c = 0; c < N; c++)
@@ -321,7 +591,7 @@ void input()
 			arr[r][c] = INF;
 		}
 	}
-	//Î∞∞Ïó¥ ÎßåÎì§Í∏∞
+	//πËø≠ ∏∏µÈ±‚
 	for (int i = 0; i < N; i++)
 	{
 		int from, to;
@@ -336,7 +606,7 @@ void input()
 		}
 		cout << std::endl;
 	}
-	//Î∞∞Ïó¥ Ìï†ÎãπÌï¥Ï†ú
+	//πËø≠ «“¥Á«ÿ¡¶
 	//for (int i = 0; i < N + 1; i++) {
 	//	delete [] arr[i];
 	//}
@@ -345,7 +615,7 @@ void input()
 int main()
 {
 	input();
-	for (int i = 0; i < N + 1; i++) 
+	for (int i = 0; i < N + 1; i++)
 	{
 		for (int c = 0; c < N + 1; c++)
 		{
@@ -355,7 +625,7 @@ int main()
 	}
 
 	//std::vector<vector<int>> arr;
-	
+
 
 
 
@@ -363,7 +633,7 @@ int main()
 #endif
 
 //------------------------------------------------------------------------------
-// 18352- ÌäπÏ†ï Í±∞Î¶¨Ïùò ÎèÑÏãú Ï∞æÍ∏∞
+// 18352- ∆Ø¡§ ∞≈∏Æ¿« µµΩ√ √£±‚
 //------------------------------------------------------------------------------
 #if 0
 #include <iostream>
@@ -444,7 +714,7 @@ int main(void)
 #endif
 
 //------------------------------------------------------------------------------
-// 1916 - ÏµúÏÜåÎπÑÏö© Íµ¨ÌïòÍ∏∞
+// 1916 - √÷º“∫ÒøÎ ±∏«œ±‚
 //------------------------------------------------------------------------------
 #if 0
 #include <iostream>
@@ -455,49 +725,49 @@ int N, M;
 int start, destination;
 std::vector<std::pair<int, int>> arr[1000 + 10];
 int d[1000 + 10];
-void input(void) 
+void input(void)
 {
 	std::cin >> N >> M;
-	for (int i = 0; i < M; i++) 
+	for (int i = 0; i < M; i++)
 	{
 		int from, to, value;
-		std::cin>>from >> to>> value;
+		std::cin >> from >> to >> value;
 		arr[from].push_back({ value,to });
 	}
 	std::cin >> start >> destination;
 }
-void distance_init() 
+void distance_init()
 {
-	for (int i = 1; i <= N; i++) 
+	for (int i = 1; i <= N; i++)
 	{
 		d[i] = INF;
 	}
 }
-void dijkstra(int ST) 
+void dijkstra(int ST)
 {
 	d[ST] = 0;
 	std::priority_queue<std::pair<int, int>> PQ;
 	PQ.push({ 0,ST });
-	while (!(PQ.empty())) 
+	while (!(PQ.empty()))
 	{
 		int c_cost = -PQ.top().first;
 		int c = PQ.top().second;
 		PQ.pop();
 
 		if (d[c] < c_cost) continue;
-		for (int i = 0; i < arr[c].size(); i++) 
+		for (int i = 0; i < arr[c].size(); i++)
 		{
 			int n_cost = arr[c][i].first;
 			int next = arr[c][i].second;
-			if (d[next] > n_cost + c_cost) 
+			if (d[next] > n_cost + c_cost)
 			{
 				d[next] = n_cost + c_cost;
-				PQ.push({-d[next], next});
+				PQ.push({ -d[next], next });
 			}
 		}
 	}
 }
-void solve(void) 
+void solve(void)
 {
 	dijkstra(start);
 	std::cout << d[destination];
@@ -511,7 +781,7 @@ int main()
 #endif
 
 //------------------------------------------------------------------------------
-// 4485 -ÎÖπÏÉâ Ïò∑ ÏûÖÏùÄ Ïï†Í∞Ä Ï†§Îã§ÏßÄ?
+// 4485 -≥Ïªˆ ø  ¿‘¿∫ æ÷∞° ¡©¥Ÿ¡ˆ?
 //------------------------------------------------------------------------------
 #if 0
 #include <iostream>
@@ -520,44 +790,44 @@ int main()
 #define INF (1e9)
 int N;
 int cnt = 1;
-std::vector<std::vector<int>> arr(125+10, std::vector<int>(125+10));
+std::vector<std::vector<int>> arr(125 + 10, std::vector<int>(125 + 10));
 //std::vector<std::vector<int>> arr(125+10);
 std::vector<std::vector<int>>d(125 + 10, std::vector<int>(125 + 10));
 int visited[125 + 10][125 + 10];
 //std::vector<int> arr(3);
 int Y[] = { 0, 1, 0 ,-1 };
-int X[] = { 1, 0,-1,0};
+int X[] = { 1, 0,-1,0 };
 
-void input(void) 
+void input(void)
 {
-	for (int i = 0; i < N; i++) 
+	for (int i = 0; i < N; i++)
 	{
 		for (int j = 0; j < N; j++)
 		{
 			int numb;
 			std::cin >> numb;
-			arr[i][j]= numb;
+			arr[i][j] = numb;
 		}
 	}
 }
-void init(void) 
+void init(void)
 {
 	for (int i = 0; i <= N; i++)
 	{
 		for (int j = 0; j <= N; j++)
 		{
-			arr[i][j]=0;
+			arr[i][j] = 0;
 			d[i][j] = INF;
 			visited[i][j] = 0;
 		}
 	}
 }
-void solve(void) 
+void solve(void)
 {
 	std::priority_queue<std::vector<int>> PQ;
 	d[0][0] = arr[0][0];
 	PQ.push({ arr[0][0] ,0, 0, });
-	while (!(PQ.empty())) 
+	while (!(PQ.empty()))
 	{
 		int currentY = PQ.top()[1];
 		int currentX = PQ.top()[2];
@@ -571,21 +841,21 @@ void solve(void)
 			if (d[dy][dx] < current_cost) continue;
 			if (d[dy][dx] > arr[dy][dx] + current_cost)
 			{
-				d[dy][dx] = arr[dy][dx]+current_cost;
+				d[dy][dx] = arr[dy][dx] + current_cost;
 				PQ.push({ -d[dy][dx],dy, dx });
 			}
 		}
 	}
-	std::cout <<"Problem "<<cnt<<": "<< d[N - 1][N - 1] << '\n';
+	std::cout << "Problem " << cnt << ": " << d[N - 1][N - 1] << '\n';
 	cnt++;
-	
+
 }
 int main(void)
 {
 	std::ios::sync_with_stdio(0);
 	std::cin.tie(0);
 	std::cout.tie(0);
-	while (1) 
+	while (1)
 	{
 		std::cin >> N;
 
@@ -597,166 +867,3 @@ int main(void)
 }
 #endif
 
-//===================DFS/BFS Î¨∏Ï†ú Ïó∞Ïäµ============================================/
-//------------------------------------------------------------------------------
-// 1260 - DFSÏôÄ BFS
-//------------------------------------------------------------------------------
-
-#if 0
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <cstring>
-int N, M, V;
-std::vector<std::vector<int>> arr(1000+10, std::vector<int>(1000+10));
-//std::vector<std::vector<int>> arr(1000+10);
-std::vector<int> visit(1000 + 10, 0);
-std::queue<int> q;
-void input(void) 
-{
-	std::cin >> N >> M >> V;
-	for (int i = 0; i < M; i++) 
-	{
-		int start, from;
-		std::cin >> start >> from;
-		arr[start][from] = 1;
-		arr[from][start] = 1;
-	}
-}
-void DFS(int start)
-{
-	if (start == V) 
-	{
-		visit[start] = 1;
-		printf("%d ", V);
-	}
-	for (int i = 1; i <= N; i++)
-	{
-		if (!(visit[i]) && arr[start][i] == 1)
-		{
-			int now = i;
-			visit[now] = 1;
-			printf("%d ", now);
-			DFS(now);
-		}
-	}
-}
-void init(void) 
-{
-	for (int i = 1; i <= N; i++) 
-	{
-		visit[i] = 0;
-	}
-}
-void BFS(int start) 
-{
-	visit[start] = 1;
-	printf("%d ", start);
-	q.push(start);
-	while (!(q.empty())) 
-	{
-		int now = q.front();
-		q.pop();
-		for (int i = 1; i <= N; i++) 
-		{
-			if (arr[now][i] == 1 && !(visit[i])) 
-			{
-				printf("%d ", i);
-				visit[i]=1;
-				q.push(i);
-			}
-		}
-		
-	}
-}
-void solve(void) 
-{
-	DFS(V);
-	printf("\n");
-	init();
-	BFS(V);
-}
-int main()
-{
-	input();
-	solve();
-}
-#endif
-
-//------------------------------------------------------------------------------
-// 2178 - ÎØ∏Î°ú ÌÉêÏÉâ
-//------------------------------------------------------------------------------
-#if 1
-#include <iostream>
-int main(void)
-{
-
-	return 0;
-}
-#endif
-
-//------------------------------------------------------------------------------
-// 
-//------------------------------------------------------------------------------
-#if 0
-
-int main()
-{
-
-}
-#endif
-
-//------------------------------------------------------------------------------
-// 
-//------------------------------------------------------------------------------
-#if 0
-
-int main()
-{
-
-}
-#endif
-
-//------------------------------------------------------------------------------
-// 
-//------------------------------------------------------------------------------
-#if 0
-
-int main()
-{
-
-}
-#endif
-
-//------------------------------------------------------------------------------
-// 
-//------------------------------------------------------------------------------
-#if 0
-
-int main()
-{
-
-}
-#endif
-
-//------------------------------------------------------------------------------
-// 
-//------------------------------------------------------------------------------
-#if 0
-
-int main()
-{
-
-}
-#endif
-
-//------------------------------------------------------------------------------
-// 
-//------------------------------------------------------------------------------
-#if 0
-
-int main()
-{
-
-}
-#endif
