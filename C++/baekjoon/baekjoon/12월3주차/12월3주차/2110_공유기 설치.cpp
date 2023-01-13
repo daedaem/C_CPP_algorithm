@@ -6,6 +6,7 @@
 using namespace std;
 
 long long C, N;
+vector<int> ac;
 vector<long long> arr;
 void input() {
 	cin >> N >> C;
